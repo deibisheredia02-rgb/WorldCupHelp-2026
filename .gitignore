@@ -1,0 +1,30 @@
+# Secrets — NEVER commit
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel
+.vercel/
+
+# Node (por si en el futuro se añaden tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Backups locales
+*.bak
+*.backup
+public/app.js.bak

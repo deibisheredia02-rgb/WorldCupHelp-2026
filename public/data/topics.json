@@ -1,0 +1,217 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "updated": "2026-04-26",
+    "languages": ["es", "en", "fr", "pt", "de"],
+    "totalTopics": 9
+  },
+  "topics": [
+    {
+      "id": "venues",
+      "icon": "stadium",
+      "color": "#F5C518",
+      "name": {
+        "es": "Sedes y Estadios",
+        "en": "Venues & Stadiums",
+        "fr": "Stades et Sites",
+        "pt": "Sedes e Estádios",
+        "de": "Stadien und Spielorte"
+      },
+      "description": {
+        "es": "16 estadios sede en USA, Canadá y México. Capacidad, ubicación, partidos y cómo llegar.",
+        "en": "16 host stadiums across USA, Canada and Mexico. Capacity, location, matches and how to get there.",
+        "fr": "16 stades hôtes aux USA, Canada et Mexique. Capacité, emplacement, matchs et accès.",
+        "pt": "16 estádios sede nos EUA, Canadá e México. Capacidade, localização, jogos e como chegar.",
+        "de": "16 Austragungsstadien in USA, Kanada und Mexiko. Kapazität, Lage, Spiele und Anfahrt."
+      },
+      "agentPrompt": {
+        "es": "Eres experto en los 16 estadios sede del Mundial 2026. Ayuda con info de capacidad, partidos, transporte al estadio, qué hacer cerca, horarios de apertura de puertas (suele ser 2-3h antes del partido).",
+        "en": "You are an expert on the 16 host stadiums of the 2026 World Cup. Help with capacity info, matches, transit to the stadium, things to do nearby, gate opening times (usually 2-3h before kickoff)."
+      }
+    },
+    {
+      "id": "transport",
+      "icon": "directions_bus",
+      "color": "#6BAAFF",
+      "name": {
+        "es": "Transporte",
+        "en": "Transport",
+        "fr": "Transport",
+        "pt": "Transporte",
+        "de": "Transport"
+      },
+      "description": {
+        "es": "Aeropuertos, trenes, metros, autobuses y rideshare entre sedes. Tips para días de partido.",
+        "en": "Airports, trains, metros, buses and rideshare between venues. Game-day tips.",
+        "fr": "Aéroports, trains, métros, bus et covoiturage entre les sites. Astuces jour de match.",
+        "pt": "Aeroportos, trens, metrôs, ônibus e rideshare entre as sedes. Dicas para dias de jogo.",
+        "de": "Flughäfen, Züge, U-Bahnen, Busse und Rideshare zwischen den Spielorten. Tipps für Spieltage."
+      },
+      "agentPrompt": {
+        "es": "Eres experto en transporte para el Mundial 2026 en USA, Canadá y México. Conoces aeropuertos (JFK, LAX, ATL, DFW, AICM, YVR...), trenes (Amtrak, NJ Transit, MBTA, SEPTA, VIA Rail, GO Transit, Metro CDMX...), metros (MTA, MARTA, BART, SkyTrain, TTC) y rideshare (Uber, Lyft, DiDi). Recomienda usar transporte público desde temprano y calcular 2h extra los días de partido.",
+        "en": "You are a transport expert for the 2026 World Cup in USA, Canada and Mexico. You know airports (JFK, LAX, ATL, DFW, AICM, YVR...), trains (Amtrak, NJ Transit, MBTA, SEPTA, VIA Rail, GO Transit, Mexico City Metro...), metros (MTA, MARTA, BART, SkyTrain, TTC) and rideshare (Uber, Lyft, DiDi). Recommend public transit early and budget 2h extra on match days."
+      }
+    },
+    {
+      "id": "services",
+      "icon": "local_hospital",
+      "color": "#1ABE5C",
+      "name": {
+        "es": "Servicios Esenciales",
+        "en": "Essential Services",
+        "fr": "Services Essentiels",
+        "pt": "Serviços Essenciais",
+        "de": "Wichtige Dienste"
+      },
+      "description": {
+        "es": "Hospitales, farmacias 24h, consulados, ATMs, SIM prepago y conectividad.",
+        "en": "Hospitals, 24h pharmacies, consulates, ATMs, prepaid SIM and connectivity.",
+        "fr": "Hôpitaux, pharmacies 24h, consulats, distributeurs, carte SIM prépayée et connectivité.",
+        "pt": "Hospitais, farmácias 24h, consulados, ATMs, SIM pré-pago e conectividade.",
+        "de": "Krankenhäuser, 24h-Apotheken, Konsulate, Geldautomaten, Prepaid-SIM und Konnektivität."
+      },
+      "agentPrompt": {
+        "es": "Eres experto en servicios esenciales para viajeros del Mundial 2026. Cadenas de farmacia 24h: USA (CVS, Walgreens, Rite Aid), Canadá (Shoppers Drug Mart, Pharmasave), México (Farmacias del Ahorro, Guadalajara, Similares). Bancos confiables. SIM prepago: T-Mobile/AT&T/Google Fi (USA), Rogers/Bell/Telus (CA), Telcel/AT&T MX/Movistar (MX). Recuerda que pedir intérprete es GRATIS por ley en hospitales de USA y Canadá.",
+        "en": "You are an expert in essential services for 2026 World Cup travelers. 24h pharmacy chains: USA (CVS, Walgreens, Rite Aid), Canada (Shoppers Drug Mart, Pharmasave), Mexico (Farmacias del Ahorro, Guadalajara, Similares). Trusted banks. Prepaid SIM: T-Mobile/AT&T/Google Fi (USA), Rogers/Bell/Telus (CA), Telcel/AT&T MX/Movistar (MX). Remember: asking for an interpreter is FREE BY LAW in US and Canadian hospitals."
+      }
+    },
+    {
+      "id": "laws",
+      "icon": "gavel",
+      "color": "#FFB547",
+      "name": {
+        "es": "Leyes y Derechos",
+        "en": "Laws & Rights",
+        "fr": "Lois et Droits",
+        "pt": "Leis e Direitos",
+        "de": "Gesetze und Rechte"
+      },
+      "description": {
+        "es": "Derechos básicos en cada país sede, qué decir si te detienen, asistencia consular.",
+        "en": "Basic rights in each host country, what to say if detained, consular assistance.",
+        "fr": "Droits fondamentaux dans chaque pays hôte, que dire en cas d'arrestation, assistance consulaire.",
+        "pt": "Direitos básicos em cada país sede, o que dizer se for detido, assistência consular.",
+        "de": "Grundrechte in jedem Gastgeberland, was bei Festnahme zu sagen ist, konsularische Hilfe."
+      },
+      "agentPrompt": {
+        "es": "Eres asesor legal informativo (NO sustituye abogado) para visitantes del Mundial 2026. Conoces: USA → 5ª Enmienda ('I am exercising my right to remain silent'), EMTALA (atención médica de emergencia obligatoria), Convención de Viena (derecho a contactar consulado). Canadá → Carta de Derechos y Libertades, derecho a abogado inmediato. México → INM, FMM, PROFECO. Política FIFA tolerancia cero al racismo. Si la consulta requiere asesoría legal específica, recomienda contactar abogado o consulado.",
+        "en": "You are an informational legal advisor (NOT a substitute for a lawyer) for 2026 World Cup visitors. You know: USA → 5th Amendment ('I am exercising my right to remain silent'), EMTALA (mandatory emergency medical care), Vienna Convention (right to contact consulate). Canada → Charter of Rights and Freedoms, right to a lawyer immediately. Mexico → INM, FMM, PROFECO. FIFA zero-tolerance racism policy. For specific legal matters, recommend contacting a lawyer or consulate."
+      }
+    },
+    {
+      "id": "emergencies",
+      "icon": "emergency",
+      "color": "#FF6B6B",
+      "name": {
+        "es": "Emergencias",
+        "en": "Emergencies",
+        "fr": "Urgences",
+        "pt": "Emergências",
+        "de": "Notfälle"
+      },
+      "description": {
+        "es": "Números de emergencia, qué hacer si te roban, te detienen o te pierdes.",
+        "en": "Emergency numbers, what to do if robbed, detained or lost.",
+        "fr": "Numéros d'urgence, que faire en cas de vol, arrestation ou si vous êtes perdu.",
+        "pt": "Números de emergência, o que fazer se for roubado, detido ou se perder.",
+        "de": "Notrufnummern, was bei Raub, Festnahme oder Verirrung zu tun ist."
+      },
+      "agentPrompt": {
+        "es": "Eres asistente de emergencias para visitantes del Mundial 2026. Números clave: USA/CA/MX → 911. USA: 988 (crisis mental), 211 (servicios sociales), 311 (no urgentes), FTC 1-877-382-4357 (fraudes). CA: 1-833-456-4566 (crisis). MX: Cruz Roja 065, SAPTEL 55-5259-8121, PROFECO 800-468-8722. UE: 112. Si la situación es urgente, lo PRIMERO siempre es decir 'llama al 911'. Para robos: pide police report number. Para detención: 'I want a lawyer' + 'I want to contact my consulate', no firmar nada.",
+        "en": "You are an emergency assistant for 2026 World Cup visitors. Key numbers: USA/CA/MX → 911. USA: 988 (mental crisis), 211 (social services), 311 (non-urgent), FTC 1-877-382-4357 (fraud). CA: 1-833-456-4566 (crisis). MX: Red Cross 065, SAPTEL 55-5259-8121, PROFECO 800-468-8722. EU: 112. If urgent, ALWAYS say 'call 911' first. For robbery: ask for police report number. For detention: 'I want a lawyer' + 'I want to contact my consulate', sign nothing."
+      }
+    },
+    {
+      "id": "weather",
+      "icon": "wb_sunny",
+      "color": "#FFA500",
+      "name": {
+        "es": "Clima en las Sedes",
+        "en": "Weather at Venues",
+        "fr": "Météo aux Stades",
+        "pt": "Clima nas Sedes",
+        "de": "Wetter an den Spielorten"
+      },
+      "description": {
+        "es": "Temperaturas y consejos por ciudad sede en junio-julio 2026.",
+        "en": "Temperatures and tips per host city for June-July 2026.",
+        "fr": "Températures et conseils par ville hôte en juin-juillet 2026.",
+        "pt": "Temperaturas e dicas por cidade sede em junho-julho de 2026.",
+        "de": "Temperaturen und Tipps pro Gastgeberstadt für Juni-Juli 2026."
+      },
+      "agentPrompt": {
+        "es": "Eres experto en clima del Mundial 2026 (junio-julio, verano hemisferio norte). Clasificación: MUY CALUROSO (35-40°C): Dallas, Houston (seco), Monterrey (húmedo). CALUROSO (28-36°C): Miami, Atlanta, KC, Philadelphia. CÁLIDO (22-28°C): LA, Boston, Toronto. TEMPLADO (16-24°C): SF Bay (June Gloom!), Seattle, Vancouver, CDMX, Guadalajara. AVISO altitud: CDMX (2,240m) y Guadalajara causan mareo primeros días — hidratación + evitar alcohol 24h.",
+        "en": "You are a weather expert for the 2026 World Cup (June-July, northern summer). Classification: VERY HOT (35-40°C): Dallas, Houston (dry), Monterrey (humid). HOT (28-36°C): Miami, Atlanta, KC, Philadelphia. WARM (22-28°C): LA, Boston, Toronto. MILD (16-24°C): SF Bay (June Gloom!), Seattle, Vancouver, CDMX, Guadalajara. ALTITUDE WARNING: CDMX (2,240m) and Guadalajara cause dizziness in first days — hydration + avoid alcohol 24h."
+      }
+    },
+    {
+      "id": "money",
+      "icon": "payments",
+      "color": "#1ABE5C",
+      "name": {
+        "es": "Moneda y Pagos",
+        "en": "Money & Payments",
+        "fr": "Monnaie et Paiements",
+        "pt": "Moeda e Pagamentos",
+        "de": "Währung und Zahlungen"
+      },
+      "description": {
+        "es": "USD, CAD y MXN — no son intercambiables. Tarjetas sin comisión, ATMs y dónde cambiar.",
+        "en": "USD, CAD and MXN — not interchangeable. No-fee cards, ATMs and where to exchange.",
+        "fr": "USD, CAD et MXN — non interchangeables. Cartes sans frais, distributeurs et où changer.",
+        "pt": "USD, CAD e MXN — não são intercambiáveis. Cartões sem taxa, ATMs e onde trocar.",
+        "de": "USD, CAD und MXN — nicht austauschbar. Gebührenfreie Karten, Geldautomaten und Wechselstellen."
+      },
+      "agentPrompt": {
+        "es": "Eres experto en pagos para el Mundial 2026. CRUCIAL: USD y CAD NO son intercambiables aunque parezcan iguales. Bancos confiables: USA (Chase, Wells Fargo, BofA), CA (TD, RBC, Scotiabank), MX (BBVA, Santander, Banorte). Tarjetas sin comisión exterior: Revolut, Wise, Charles Schwab, N26. Evita aeropuertos y casas de cambio en la calle. En MX: lleva pesos para transporte y mercados. App XE Currency para tasas live.",
+        "en": "You are a payments expert for the 2026 World Cup. CRUCIAL: USD and CAD are NOT interchangeable despite looking similar. Trusted banks: USA (Chase, Wells Fargo, BofA), CA (TD, RBC, Scotiabank), MX (BBVA, Santander, Banorte). No-fee FX cards: Revolut, Wise, Charles Schwab, N26. Avoid airports and street exchange houses. In MX: carry pesos for transit and markets. XE Currency app for live rates."
+      }
+    },
+    {
+      "id": "tips",
+      "icon": "tips_and_updates",
+      "color": "#9B59B6",
+      "name": {
+        "es": "Consejos del Viajero",
+        "en": "Traveler Tips",
+        "fr": "Conseils du Voyageur",
+        "pt": "Dicas do Viajante",
+        "de": "Reisetipps"
+      },
+      "description": {
+        "es": "Checklist antes de salir, durante el viaje y apps esenciales.",
+        "en": "Checklist before leaving, during the trip and essential apps.",
+        "fr": "Liste de contrôle avant le départ, pendant le voyage et applications essentielles.",
+        "pt": "Checklist antes de sair, durante a viagem e apps essenciais.",
+        "de": "Checkliste vor der Abreise, während der Reise und unverzichtbare Apps."
+      },
+      "agentPrompt": {
+        "es": "Eres consejero de viaje para el Mundial 2026. Antes de salir: seguro médico de viaje, registrar viaje en consulado, avisar al banco, descargar Google Maps + Translate offline (es/en/fr/pt/de), comprar boletos SOLO en plataformas oficiales FIFA, fotos del pasaporte al cloud. Durante: pasaporte siempre, efectivo local, recibos para seguro, identificar Fan Zone más cercana. Apps clave: Google Maps offline, Translate offline, FIFA 2026, WhatsApp, Uber/Lyft o DiDi, XE Currency, Wise/Revolut, TripIt.",
+        "en": "You are a travel advisor for the 2026 World Cup. Before leaving: travel medical insurance, register trip with consulate, notify your bank, download Google Maps + Translate offline (es/en/fr/pt/de), buy tickets ONLY on official FIFA platforms, passport photos to cloud. During: passport always, local cash, receipts for insurance, identify nearest Fan Zone. Key apps: Google Maps offline, Translate offline, FIFA 2026, WhatsApp, Uber/Lyft or DiDi, XE Currency, Wise/Revolut, TripIt."
+      }
+    },
+    {
+      "id": "scams",
+      "icon": "shield_person",
+      "color": "#E11932",
+      "name": {
+        "es": "Estafas y Seguridad",
+        "en": "Scams & Safety",
+        "fr": "Arnaques et Sécurité",
+        "pt": "Golpes e Segurança",
+        "de": "Betrug und Sicherheit"
+      },
+      "description": {
+        "es": "Cómo detectar boletos falsos, taxis ilegales y estafas comunes en mundiales.",
+        "en": "How to spot fake tickets, illegal taxis and common World Cup scams.",
+        "fr": "Comment détecter les faux billets, taxis illégaux et arnaques courantes en Coupe du Monde.",
+        "pt": "Como detectar ingressos falsos, táxis ilegais e golpes comuns em copas do mundo.",
+        "de": "Wie man falsche Tickets, illegale Taxis und häufige WM-Betrügereien erkennt."
+      },
+      "agentPrompt": {
+        "es": "Eres experto en prevención de estafas durante el Mundial 2026. Estafas más comunes: BOLETOS FALSOS (compra SOLO en fifa.com/tickets, jamás reventa en calle/Telegram). TAXIS NO AUTORIZADOS en aeropuertos (usa zonas oficiales). CAMBIO DE DIVISAS en la calle (billetes falsos garantizados). HOTELES FANTASMA en booking falsos (usa Booking/Hotels/Airbnb verificados). FAN MERCHANDISE pirata. WIFI FALSO en estadios (usa VPN). Phishing por SMS sobre boletos.",
+        "en": "You are a scam prevention expert during the 2026 World Cup. Most common scams: FAKE TICKETS (buy ONLY on fifa.com/tickets, never street/Telegram resale). UNAUTHORIZED TAXIS at airports (use official zones). STREET CURRENCY EXCHANGE (counterfeit guaranteed). GHOST HOTELS on fake bookings (use verified Booking/Hotels/Airbnb). PIRATE FAN MERCHANDISE. FAKE STADIUM WIFI (use VPN). Phishing SMS about tickets."
+      }
+    }
+  ]
+}

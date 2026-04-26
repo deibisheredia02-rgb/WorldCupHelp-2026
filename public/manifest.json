@@ -1,0 +1,60 @@
+{
+  "name": "WorldCupHelp 2026",
+  "short_name": "WCH 2026",
+  "description": "Tu guía bilingüe del Mundial 2026 — sedes, transporte, emergencias, derechos.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
+  "lang": "es",
+  "dir": "ltr",
+  "scope": "/",
+  "categories": ["travel", "sports", "navigation"],
+  "icons": [
+    {
+      "src": "/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Sedes",
+      "short_name": "Sedes",
+      "url": "/#venues",
+      "description": "16 estadios sede del Mundial 2026"
+    },
+    {
+      "name": "SOS / Emergencias",
+      "short_name": "SOS",
+      "url": "/#sos",
+      "description": "Números de emergencia y qué hacer"
+    },
+    {
+      "name": "Pregunta IA",
+      "short_name": "Chat IA",
+      "url": "/#chat",
+      "description": "Asistente IA del Mundial"
+    }
+  ]
+}

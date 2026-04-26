@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#F5C518"/>
+      <stop offset="60%" stop-color="#C49A00"/>
+      <stop offset="100%" stop-color="#8B2A20"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#0d0d0d"/>
+  <circle cx="32" cy="32" r="22" fill="url(#g)" stroke="#F5C518" stroke-width="1.5"/>
+  <!-- Patron de balon (pentagonos esquemáticos) -->
+  <g fill="#0d0d0d" stroke="#0d0d0d" stroke-width="1">
+    <polygon points="32,18 38,22 35,28 29,28 26,22"/>
+    <polygon points="20,30 26,28 28,33 24,38 19,35"/>
+    <polygon points="44,30 38,28 36,33 40,38 45,35"/>
+    <polygon points="28,40 36,40 38,45 32,49 26,45"/>
+  </g>
+  <!-- Letras WCH inferior -->
+  <text x="32" y="60" text-anchor="middle" fill="#F5C518" font-family="Arial,sans-serif" font-weight="900" font-size="6">WCH 2026</text>
+</svg>

@@ -1,0 +1,224 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "updated": "2026-04-26",
+    "source": "worldcup2026-guide-v2.md"
+  },
+  "byCountry": {
+    "US": {
+      "name": "Estados Unidos",
+      "flag": "🇺🇸",
+      "primary": {
+        "label": { "es": "Emergencias 911", "en": "Emergency 911", "fr": "Urgences 911", "pt": "Emergências 911", "de": "Notruf 911" },
+        "number": "911",
+        "description": { "es": "Policía, ambulancia, bomberos", "en": "Police, ambulance, fire", "fr": "Police, ambulance, pompiers", "pt": "Polícia, ambulância, bombeiros", "de": "Polizei, Ambulanz, Feuerwehr" }
+      },
+      "lines": [
+        { "id": "us-988", "number": "988", "label": { "es": "Crisis mental / Suicide & Crisis Lifeline", "en": "Mental crisis / Suicide & Crisis Lifeline", "fr": "Crise mentale / Suicide & Crisis Lifeline", "pt": "Crise mental / Suicide & Crisis Lifeline", "de": "Psychische Krise / Suicide & Crisis Lifeline" }, "free": true, "h24": true, "url": "https://988lifeline.org" },
+        { "id": "us-211", "number": "211", "label": { "es": "Servicios sociales y comunitarios", "en": "Social and community services", "fr": "Services sociaux et communautaires", "pt": "Serviços sociais e comunitários", "de": "Sozial- und Gemeinschaftsdienste" } },
+        { "id": "us-311", "number": "311", "label": { "es": "Servicios no urgentes de la ciudad", "en": "Non-urgent city services", "fr": "Services municipaux non urgents", "pt": "Serviços não urgentes da cidade", "de": "Nicht dringende Stadtservices" } },
+        { "id": "us-ftc", "number": "1-877-382-4357", "label": { "es": "FTC — Fraudes al consumidor", "en": "FTC — Consumer fraud", "fr": "FTC — Fraudes à la consommation", "pt": "FTC — Fraudes ao consumidor", "de": "FTC — Verbraucherbetrug" }, "url": "https://www.ftc.gov" }
+      ]
+    },
+    "CA": {
+      "name": "Canadá",
+      "flag": "🇨🇦",
+      "primary": {
+        "label": { "es": "Emergencias 911", "en": "Emergency 911", "fr": "Urgences 911", "pt": "Emergências 911", "de": "Notruf 911" },
+        "number": "911",
+        "description": { "es": "Policía, ambulancia, bomberos", "en": "Police, ambulance, fire", "fr": "Police, ambulance, pompiers", "pt": "Polícia, ambulância, bombeiros", "de": "Polizei, Ambulanz, Feuerwehr" }
+      },
+      "lines": [
+        { "id": "ca-crisis", "number": "1-833-456-4566", "label": { "es": "Línea nacional de crisis", "en": "National crisis line", "fr": "Ligne nationale de crise", "pt": "Linha nacional de crise", "de": "Nationale Krisenlinie" }, "free": true, "h24": true }
+      ]
+    },
+    "MX": {
+      "name": "México",
+      "flag": "🇲🇽",
+      "primary": {
+        "label": { "es": "Emergencias 911", "en": "Emergency 911", "fr": "Urgences 911", "pt": "Emergências 911", "de": "Notruf 911" },
+        "number": "911",
+        "description": { "es": "Policía, ambulancia, bomberos", "en": "Police, ambulance, fire", "fr": "Police, ambulance, pompiers", "pt": "Polícia, ambulância, bombeiros", "de": "Polizei, Ambulanz, Feuerwehr" }
+      },
+      "lines": [
+        { "id": "mx-cruzroja", "number": "065", "label": { "es": "Cruz Roja — Ambulancia", "en": "Red Cross — Ambulance", "fr": "Croix-Rouge — Ambulance", "pt": "Cruz Vermelha — Ambulância", "de": "Rotes Kreuz — Ambulanz" } },
+        { "id": "mx-saptel", "number": "55-5259-8121", "label": { "es": "SAPTEL — Crisis mental", "en": "SAPTEL — Mental crisis", "fr": "SAPTEL — Crise mentale", "pt": "SAPTEL — Crise mental", "de": "SAPTEL — Psychische Krise" }, "free": true, "h24": true },
+        { "id": "mx-profeco", "number": "800-468-8722", "label": { "es": "PROFECO — Protección al consumidor", "en": "PROFECO — Consumer protection", "fr": "PROFECO — Protection du consommateur", "pt": "PROFECO — Proteção ao consumidor", "de": "PROFECO — Verbraucherschutz" }, "url": "https://www.profeco.gob.mx" }
+      ]
+    },
+    "EU": {
+      "name": "Unión Europea",
+      "flag": "🇪🇺",
+      "primary": {
+        "label": { "es": "Emergencias 112 (UE)", "en": "Emergency 112 (EU)", "fr": "Urgences 112 (UE)", "pt": "Emergências 112 (UE)", "de": "Notruf 112 (EU)" },
+        "number": "112",
+        "description": { "es": "Para ciudadanos UE en territorio comunitario", "en": "For EU citizens in EU territory", "fr": "Pour les citoyens UE en territoire communautaire", "pt": "Para cidadãos UE em território comunitário", "de": "Für EU-Bürger im EU-Gebiet" }
+      },
+      "lines": []
+    }
+  },
+  "scenarios": [
+    {
+      "id": "medical",
+      "icon": "medical_services",
+      "title": {
+        "es": "Necesitas atención médica",
+        "en": "You need medical attention",
+        "fr": "Vous avez besoin de soins médicaux",
+        "pt": "Você precisa de atendimento médico",
+        "de": "Sie brauchen medizinische Hilfe"
+      },
+      "steps": {
+        "es": [
+          "Si es grave: llama al 911 y di 'I need an ambulance'",
+          "Si puedes desplazarte: ve a la sala de emergencias más cercana",
+          "Di 'I have an emergency' o 'Necesito un médico'",
+          "Pide un intérprete — es GRATIS por ley en USA y Canadá",
+          "Conserva todos los documentos y facturas para tu seguro"
+        ],
+        "en": [
+          "If serious: call 911 and say 'I need an ambulance'",
+          "If you can move: go to the nearest emergency room",
+          "Say 'I have an emergency'",
+          "Ask for an interpreter — it's FREE BY LAW in USA and Canada",
+          "Keep all documents and bills for your insurance"
+        ]
+      }
+    },
+    {
+      "id": "robbery",
+      "icon": "shield_alert",
+      "title": {
+        "es": "Te robaron",
+        "en": "You were robbed",
+        "fr": "On vous a volé",
+        "pt": "Você foi roubado",
+        "de": "Sie wurden bestohlen"
+      },
+      "steps": {
+        "es": [
+          "Llama al 911 y reporta el incidente",
+          "Solicita el police report number — imprescindible para el seguro",
+          "Si robaron tu pasaporte → ve al consulado inmediatamente",
+          "Bloquea tus tarjetas (número al reverso de cada tarjeta)",
+          "Reporta documentos robados en econsulate.state.gov o en tu consulado"
+        ],
+        "en": [
+          "Call 911 and report the incident",
+          "Request a police report number — essential for insurance",
+          "If passport was stolen → go to your consulate immediately",
+          "Block your cards (number on the back of each card)",
+          "Report stolen documents at econsulate.state.gov or at your consulate"
+        ]
+      }
+    },
+    {
+      "id": "detained",
+      "icon": "balance",
+      "title": {
+        "es": "Fuiste detenido",
+        "en": "You were detained",
+        "fr": "Vous avez été arrêté",
+        "pt": "Você foi detido",
+        "de": "Sie wurden festgenommen"
+      },
+      "steps": {
+        "es": [
+          "Mantén la calma",
+          "Di claramente: 'I want a lawyer'",
+          "Di: 'I want to contact my consulate'",
+          "NO firmes nada sin asesoría legal",
+          "Ejerce tu derecho al silencio — no respondas preguntas",
+          "El consulado opera 24/7 para emergencias de sus nacionales"
+        ],
+        "en": [
+          "Stay calm",
+          "Say clearly: 'I want a lawyer'",
+          "Say: 'I want to contact my consulate'",
+          "DO NOT sign anything without legal advice",
+          "Exercise your right to remain silent — don't answer questions",
+          "Consulates operate 24/7 for nationals' emergencies"
+        ]
+      }
+    },
+    {
+      "id": "lost",
+      "icon": "explore_off",
+      "title": {
+        "es": "Te perdiste o desorientaste",
+        "en": "You got lost or disoriented",
+        "fr": "Vous êtes perdu ou désorienté",
+        "pt": "Você se perdeu ou desorientou",
+        "de": "Sie haben sich verlaufen oder sind orientierungslos"
+      },
+      "steps": {
+        "es": [
+          "Ve a la Fan Zone oficial más cercana — personal multilingüe",
+          "Muestra tu boleto del partido — contiene la dirección del estadio",
+          "Busca un policía o guardia de seguridad",
+          "Activa el GPS en tu teléfono",
+          "La app oficial de FIFA tiene función de localización y mapa del recinto"
+        ],
+        "en": [
+          "Go to the nearest official Fan Zone — multilingual staff",
+          "Show your match ticket — it contains the stadium address",
+          "Find a police officer or security guard",
+          "Activate GPS on your phone",
+          "The official FIFA app has location and venue map features"
+        ]
+      }
+    },
+    {
+      "id": "discrimination",
+      "icon": "report",
+      "title": {
+        "es": "Sufriste discriminación",
+        "en": "You experienced discrimination",
+        "fr": "Vous avez subi de la discrimination",
+        "pt": "Você sofreu discriminação",
+        "de": "Sie haben Diskriminierung erlebt"
+      },
+      "steps": {
+        "es": [
+          "Documenta todo: fotos, videos, nombres de testigos",
+          "Reporta al supervisor del estadio inmediatamente",
+          "Reporta a la policía local",
+          "Reporta en la app oficial de FIFA o en fifa.com",
+          "USA: justice.gov/crt (DOJ Civil Rights) o eeoc.gov"
+        ],
+        "en": [
+          "Document everything: photos, videos, witness names",
+          "Report to stadium supervisor immediately",
+          "Report to local police",
+          "Report on the official FIFA app or fifa.com",
+          "USA: justice.gov/crt (DOJ Civil Rights) or eeoc.gov"
+        ]
+      }
+    },
+    {
+      "id": "mental",
+      "icon": "favorite",
+      "title": {
+        "es": "Crisis emocional o de salud mental",
+        "en": "Emotional or mental health crisis",
+        "fr": "Crise émotionnelle ou de santé mentale",
+        "pt": "Crise emocional ou de saúde mental",
+        "de": "Emotionale oder psychische Krise"
+      },
+      "steps": {
+        "es": [
+          "USA: llama al 988 (Suicide & Crisis Lifeline) — gratuito, confidencial, 24/7",
+          "Canadá: 1-833-456-4566 — línea nacional de crisis",
+          "México: SAPTEL 55-5259-8121 — gratuito, confidencial, 24/7",
+          "Pedir ayuda es una señal de fortaleza 💙"
+        ],
+        "en": [
+          "USA: call 988 (Suicide & Crisis Lifeline) — free, confidential, 24/7",
+          "Canada: 1-833-456-4566 — national crisis line",
+          "Mexico: SAPTEL 55-5259-8121 — free, confidential, 24/7",
+          "Asking for help is a sign of strength 💙"
+        ]
+      }
+    }
+  ]
+}
