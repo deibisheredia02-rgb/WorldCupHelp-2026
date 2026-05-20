@@ -136,6 +136,27 @@ const T = {
     fr: 'Voir les détails de',
     pt: 'Ver detalhes de',
     de: 'Details anzeigen von'
+  },
+  attachDoc: {
+    es: 'Adjuntar boleto o documento',
+    en: 'Attach ticket or document',
+    fr: 'Joindre un billet ou document',
+    pt: 'Anexar bilhete ou documento',
+    de: 'Ticket oder Dokument anhängen'
+  },
+  fileAttached: {
+    es: 'Archivo adjunto',
+    en: 'Attached file',
+    fr: 'Fichier joint',
+    pt: 'Arquivo anexado',
+    de: 'Anhang'
+  },
+  fileTooLarge: {
+    es: 'Archivo muy grande (máx. 3 MB)',
+    en: 'File too large (max 3 MB)',
+    fr: 'Fichier trop volumineux (max 3 Mo)',
+    pt: 'Arquivo muito grande (máx. 3 MB)',
+    de: 'Datei zu groß (max. 3 MB)'
   }
 };
 
@@ -837,9 +858,14 @@ function NearbyBlock({ lat, lng, type, label, icon, color, lang }) {
    9. Vista de tema (chat con prompt especializado)
    ───────────────────────────────────────────────────────────────────────── */
 function TopicView({ slug, lang, navigate }) {
-  const { data, loading } = useFetch('/data/topics.json', []);
+  const { data, loading, error, refetch } = useFetch('/data/topics.json', []);
   const topic = data?.topics?.find(t => t.id === slug);
   if (loading) return h('div', { className: 'min-h-[60vh] flex items-center justify-center' }, h('div', { className: 'spinner' }));
+  if (error) return h('div', { className: 'min-h-[60vh] flex flex-col items-center justify-center px-6 text-center' },
+    h('div', { className: 'text-6xl mb-4' }, '⚽'),
+    h('p', { className: 'text-text-sec mb-4' }, t('errorGeneric', lang)),
+    h('button', { className: 'btn-gold', onClick: refetch }, t('retry', lang))
+  );
   if (!topic) return h('div', { className: 'p-6 text-center' },
     h('p', { className: 'text-text-sec' }, t('errorGeneric', lang)),
     h('button', { className: 'btn-ghost mt-4', onClick: () => navigate('home') }, '← Home')
@@ -887,13 +913,18 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
   const handleFileChange = (e) => {
     const f = e.target.files?.[0];
     if (!f) return;
+    // Reset input so same file can be re-selected after clearing
+    e.target.value = '';
+    if (f.size > 3 * 1024 * 1024) {
+      setMessages(m => [...m, { role: 'assistant', content: '⚠️ ' + t('fileTooLarge', lang) }]);
+      return;
+    }
     const reader = new FileReader();
     reader.onload = (evt) => {
       const dataUrl = evt.target.result;
       const commaIdx = dataUrl.indexOf(',');
       const base64 = dataUrl.slice(commaIdx + 1);
-      const mimeType = f.type;
-      setFile({ name: f.name, base64, mimeType });
+      setFile({ name: f.name, base64, mimeType: f.type, dataUrl, isImage: f.type.startsWith('image/') });
     };
     reader.readAsDataURL(f);
   };
@@ -903,7 +934,7 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
     if ((!text && !file) || sending) return;
     
     // Add text tag to message if file is attached
-    const content = text + (file ? `\n[Archivo adjunto: ${file.name}]` : '');
+    const content = text + (file ? `\n[${t('fileAttached', lang)}: ${file.name}]` : '');
     const next = [...messages, { role: 'user', content }];
     setMessages(next);
     setInput('');
@@ -961,9 +992,14 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
         )
       )
     ),
-    file && h('div', { className: 'px-4 py-2 bg-gold/10 border-t border-b border-gold/25 flex items-center justify-between text-xs font-body text-gold' },
-      h('span', { className: 'truncate max-w-[80%] flex items-center gap-1.5' }, Icon('attach_file', 'text-xs'), file.name),
-      h('button', { onClick: () => setFile(null), className: 'text-red hover:underline font-bold px-1' }, '✕')
+    file && h('div', { className: 'px-4 py-2 bg-gold/10 border-t border-b border-gold/25 flex items-center justify-between gap-2 text-xs font-body text-gold' },
+      h('span', { className: 'truncate flex items-center gap-2 min-w-0' },
+        file.isImage
+          ? h('img', { src: file.dataUrl, alt: '', className: 'w-8 h-8 rounded object-cover flex-shrink-0', style: { border: '1px solid rgba(245,197,24,0.4)' } })
+          : Icon('picture_as_pdf', 'text-base flex-shrink-0'),
+        h('span', { className: 'truncate' }, file.name)
+      ),
+      h('button', { onClick: () => setFile(null), className: 'flex-shrink-0 text-red font-bold px-1 active:opacity-70' }, '✕')
     ),
     h('div', { className: 'p-3 border-t border-white/5 flex gap-2 items-center' },
       h('input', {
@@ -979,7 +1015,7 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
         className: `w-12 h-12 rounded-full flex items-center justify-center active:scale-95 border transition-all ${
           file ? 'border-gold bg-gold/10 text-gold shadow-gold-glow' : 'border-white/10 text-text-sec'
         }`,
-        title: lang === 'es' ? 'Adjuntar boleto o documento' : 'Attach ticket or document'
+        title: t('attachDoc', lang)
       }, Icon('attach_file')),
       h('input', {
         type: 'text',
@@ -1003,8 +1039,13 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
   11. Vista SOS (Emergencias)
    ───────────────────────────────────────────────────────────────────────── */
 function SOSView({ lang, navigate }) {
-  const { data, loading } = useFetch('/data/emergency.json', []);
+  const { data, loading, error, refetch } = useFetch('/data/emergency.json', []);
   if (loading) return h('div', { className: 'min-h-[60vh] flex items-center justify-center' }, h('div', { className: 'spinner' }));
+  if (error) return h('div', { className: 'min-h-[60vh] flex flex-col items-center justify-center px-6 text-center' },
+    h('div', { className: 'text-6xl mb-4' }, '🆘'),
+    h('p', { className: 'text-text-sec mb-4' }, t('errorGeneric', lang)),
+    h('button', { className: 'btn-gold', onClick: refetch }, t('retry', lang))
+  );
 
   const countries = data?.byCountry || {};
   const scenarios = data?.scenarios || [];
@@ -1176,8 +1217,13 @@ function VenuesView({ lang, navigate }) {
   14. Vista Topics (lista de los 9 agentes)
    ───────────────────────────────────────────────────────────────────────── */
 function TopicsView({ lang, navigate }) {
-  const { data, loading } = useFetch('/data/topics.json', []);
+  const { data, loading, error, refetch } = useFetch('/data/topics.json', []);
   if (loading) return h('div', { className: 'min-h-[60vh] flex items-center justify-center' }, h('div', { className: 'spinner' }));
+  if (error) return h('div', { className: 'min-h-[60vh] flex flex-col items-center justify-center px-6 text-center' },
+    h('div', { className: 'text-6xl mb-4' }, '⚽'),
+    h('p', { className: 'text-text-sec mb-4' }, t('errorGeneric', lang)),
+    h('button', { className: 'btn-gold', onClick: refetch }, t('retry', lang))
+  );
   return h('section', { className: 'pb-24 pt-20' },
     h(TopicsGrid, { topics: data.topics, lang, navigate })
   );
@@ -1187,15 +1233,21 @@ function TopicsView({ lang, navigate }) {
   15. Vista Home
    ───────────────────────────────────────────────────────────────────────── */
 function HomeView({ lang, navigate }) {
-  const { data: cdata, loading: cl } = useFetch('/data/cities.json', []);
-  const { data: tdata, loading: tl } = useFetch('/data/topics.json', []);
+  const { data: cdata, loading: cl, error: ce, refetch: cr } = useFetch('/data/cities.json', []);
+  const { data: tdata, loading: tl, error: te, refetch: tr } = useFetch('/data/topics.json', []);
+
+  const errorBlock = (refetch) => h('div', { className: 'flex flex-col items-center py-10 gap-3' },
+    h('p', { className: 'text-text-sec text-sm' }, t('errorGeneric', lang)),
+    h('button', { className: 'btn-gold text-sm', onClick: refetch }, t('retry', lang))
+  );
+
   return h('div', null,
     h(Hero, { lang, navigate }),
-    cl
-      ? h('div', { className: 'flex justify-center py-10' }, h('div', { className: 'spinner' }))
+    cl ? h('div', { className: 'flex justify-center py-10' }, h('div', { className: 'spinner' }))
+      : ce ? errorBlock(cr)
       : h(Carousel3D, { cities: cdata.cities, lang, navigate }),
-    tl
-      ? h('div', { className: 'flex justify-center py-10' }, h('div', { className: 'spinner' }))
+    tl ? h('div', { className: 'flex justify-center py-10' }, h('div', { className: 'spinner' }))
+      : te ? errorBlock(tr)
       : h(TopicsGrid, { topics: tdata.topics, lang, navigate })
   );
 }
