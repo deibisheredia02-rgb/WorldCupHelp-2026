@@ -119,7 +119,22 @@ const T = {
   hours: { es: 'horas', en: 'hours', fr: 'heures', pt: 'horas', de: 'Stunden' },
   minutes: { es: 'min', en: 'min', fr: 'min', pt: 'min', de: 'Min' },
   countries: { es: '3 países sede', en: '3 host countries', fr: '3 pays hôtes', pt: '3 países sede', de: '3 Gastgeberländer' },
-  totalCities: { es: '16 ciudades · 16 estadios', en: '16 cities · 16 stadiums', fr: '16 villes · 16 stades', pt: '16 cidades · 16 estádios', de: '16 Städte · 16 Stadien' }
+  totalCities: { es: '16 ciudades · 16 estadios', en: '16 cities · 16 stadiums', fr: '16 villes · 16 stades', pt: '16 cidades · 16 estádios', de: '16 Städte · 16 Stadien' },
+  locateMe: { es: 'Ubicarme', en: 'Locate me', fr: 'Me localiser', pt: 'Localizar-me', de: 'Mich orten' },
+  locating: { es: 'Localizando…', en: 'Locating…', fr: 'Localisation…', pt: 'Localizando…', de: 'Ortung…' },
+  locationDenied: { es: 'Permiso de ubicación denegado', en: 'Location permission denied', fr: 'Autorisation de localisation refusée', pt: 'Permissão de localização negada', de: 'Standortberechtigung verweigert' },
+  locationError: { es: 'No se pudo obtener tu ubicación', en: 'Could not get your location', fr: 'Impossible d\'obtenir votre position', pt: 'Não foi possível obter sua localização', de: 'Standort konnte nicht ermittelt werden' },
+  directionsFromMe: { es: 'Cómo llegar desde mi ubicación', en: 'Directions from my location', fr: 'Itinéraire depuis ma position', pt: 'Como chegar daqui', de: 'Route von meinem Standort' },
+  directionsTransit: { es: 'En transporte público', en: 'By public transit', fr: 'En transports en commun', pt: 'Por transporte público', de: 'Mit öffentlichen Verkehrsmitteln' },
+  distanceFromYou: { es: 'desde tu ubicación', en: 'from your location', fr: 'depuis votre position', pt: 'da sua localização', de: 'von Ihrem Standort' },
+  km: { es: 'km', en: 'km', fr: 'km', pt: 'km', de: 'km' },
+  seeDetails: {
+    es: 'Ver detalles de',
+    en: 'See details of',
+    fr: 'Voir les détails de',
+    pt: 'Ver detalhes de',
+    de: 'Details anzeigen von'
+  }
 };
 
 const t = (key, lang) => (T[key] && T[key][lang]) || (T[key] && T[key].en) || key;
@@ -172,8 +187,75 @@ function useCountdown(target) {
   };
 }
 
+// Geolocation hook — pide permiso bajo demanda (privacy-first), persiste en sessionStorage
+function useGeolocation() {
+  const [state, setState] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem('wch_geo');
+      if (saved) {
+        const p = JSON.parse(saved);
+        if (p && Number.isFinite(p.lat) && Number.isFinite(p.lng)) {
+          return { lat: p.lat, lng: p.lng, loading: false, error: null, requested: true };
+        }
+      }
+    } catch (e) {}
+    return { lat: null, lng: null, loading: false, error: null, requested: false };
+  });
+
+  const request = useCallback(() => {
+    if (!('geolocation' in navigator)) {
+      setState(s => ({ ...s, error: 'unsupported', requested: true }));
+      return;
+    }
+    setState(s => ({ ...s, loading: true, requested: true, error: null }));
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const next = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+          loading: false, error: null, requested: true
+        };
+        try { sessionStorage.setItem('wch_geo', JSON.stringify({ lat: next.lat, lng: next.lng })); } catch (e) {}
+        setState(next);
+      },
+      (err) => setState(s => ({
+        ...s, loading: false, requested: true,
+        error: err.code === 1 ? 'denied' : 'error'
+      })),
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 }
+    );
+  }, []);
+
+  const clear = useCallback(() => {
+    try { sessionStorage.removeItem('wch_geo'); } catch (e) {}
+    setState({ lat: null, lng: null, loading: false, error: null, requested: false });
+  }, []);
+
+  return { ...state, request, clear };
+}
+
+// Helpers de Google Maps URLs
+const directionsUrl = (destLat, destLng, destName, userLat, userLng, mode = 'transit') => {
+  if (Number.isFinite(userLat) && Number.isFinite(userLng)) {
+    return `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${destLat},${destLng}&travelmode=${mode}`;
+  }
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destName)}`;
+};
+
+const haversineKm = (lat1, lng1, lat2, lng2) => {
+  const R = 6371;
+  const toRad = d => d * Math.PI / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+};
+
 function useFetch(url, deps = []) {
   const [state, setState] = useState({ data: null, loading: true, error: null });
+  const [retry, setRetry] = useState(0);
+  const refetch = useCallback(() => setRetry(r => r + 1), []);
+
   useEffect(() => {
     let alive = true;
     setState({ data: null, loading: true, error: null });
@@ -183,8 +265,9 @@ function useFetch(url, deps = []) {
       .catch(error => { if (alive) setState({ data: null, loading: false, error }); });
     return () => { alive = false; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
-  return state;
+  }, [url, retry, ...deps]);
+
+  return { ...state, refetch };
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -213,11 +296,13 @@ const tagLabel = (tag, lang) => {
 };
 
 const cityImage = (city) => {
-  // Fallback gradient si no hay imagen
-  const g = `linear-gradient(135deg, ${{
-    US: 'rgba(107,170,255,0.30)', CA: 'rgba(255,107,107,0.30)', MX: 'rgba(26,190,92,0.30)'
-  }[city.country] || 'rgba(245,197,24,0.30)'} 0%, rgba(13,13,13,0.85) 100%)`;
-  return g;
+  const images = {
+    US: '/img/cities/usa_stadium.png',
+    CA: '/img/cities/can_stadium.png',
+    MX: '/img/cities/mex_stadium.png'
+  };
+  const imgUrl = images[city.country] || '/img/cities/usa_stadium.png';
+  return `linear-gradient(135deg, rgba(13, 13, 13, 0.4) 0%, rgba(13, 13, 13, 0.85) 100%), url("${imgUrl}") center/cover no-repeat`;
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -380,7 +465,7 @@ function Carousel3D({ cities, lang, navigate }) {
     h('div', { className: 'text-center mb-6' },
       h('div', { className: 'eyebrow mb-2' }, t('navVenues', lang)),
       h('h2', { className: 'display text-3xl sm:text-4xl text-text-pri' },
-        cities.length, ' ', t('totalCities', lang).split('·')[0].trim()
+        t('totalCities', lang).split('·')[0].trim()
       )
     ),
 
@@ -408,7 +493,7 @@ function Carousel3D({ cities, lang, navigate }) {
 
         return h('div', {
           key: city.id,
-          className: 'carousel-3d-card absolute w-56 h-80 sm:w-64 sm:h-96 rounded-3xl overflow-hidden cursor-pointer',
+          className: `carousel-3d-card absolute w-56 h-80 sm:w-64 sm:h-96 rounded-3xl overflow-hidden cursor-pointer glow-${city.country.toLowerCase()}`,
           style: {
             transform,
             zIndex: isCenter ? 30 : isAdjacent ? 20 : isFar ? 10 : 0,
@@ -474,7 +559,7 @@ function Carousel3D({ cities, lang, navigate }) {
         className: 'inline-flex items-center gap-2 text-gold font-body font-bold text-sm active:opacity-70'
       },
         Icon('arrow_forward'),
-        ' ', t('navVenues', lang) === 'Sedes' ? 'Ver detalles de ' : 'See details of ',
+        ' ', t('seeDetails', lang), ' ',
         current.name
       )
     )
@@ -496,7 +581,7 @@ function TopicsGrid({ topics, lang, navigate }) {
         h('button', {
           key: topic.id,
           onClick: () => navigate(`topic/${topic.id}`),
-          className: 'glass rounded-2xl p-4 text-left active:scale-95 transition-transform group min-h-[140px] flex flex-col justify-between',
+          className: 'glass rounded-2xl p-4 text-left active:scale-95 transition-transform group min-h-[140px] flex flex-col justify-between glow-gold',
           style: { borderColor: topic.color + '30' }
         },
           h('div', null,
@@ -524,17 +609,25 @@ function TopicsGrid({ topics, lang, navigate }) {
    8. Vista detalle de sede
    ───────────────────────────────────────────────────────────────────────── */
 function VenueDetail({ slug, lang, navigate }) {
-  const { data, loading, error } = useFetch('/data/cities.json', []);
+  const { data, loading, error, refetch } = useFetch('/data/cities.json', []);
+  const geo = useGeolocation();
   const city = data?.cities?.find(c => c.id === slug);
 
   if (loading) return h('div', { className: 'min-h-[60vh] flex items-center justify-center' }, h('div', { className: 'spinner' }));
   if (error || !city) return h('div', { className: 'min-h-[60vh] flex flex-col items-center justify-center px-6 text-center' },
     h('div', { className: 'text-6xl mb-4' }, '⚽'),
-    h('p', { className: 'text-text-sec mb-4' }, t('errorGeneric', lang)),
-    h('button', { className: 'btn-ghost', onClick: () => navigate('venues') }, '← ', t('navVenues', lang))
+    h('p', { className: 'text-text-sec mb-4' }, error ? t('errorGeneric', lang) : 'Ciudad no encontrada / City not found.'),
+    h('div', { className: 'flex gap-3' },
+      error && h('button', { className: 'btn-gold', onClick: refetch }, t('retry', lang)),
+      h('button', { className: 'btn-ghost', onClick: () => navigate('venues') }, '← ', t('navVenues', lang))
+    )
   );
 
-  const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(city.mapsQuery)}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(city.mapsQuery)}`;
+  const dirUrl = directionsUrl(city.lat, city.lng, city.mapsQuery, geo.lat, geo.lng);
+  const distance = (geo.lat != null && geo.lng != null && city.lat != null)
+    ? haversineKm(geo.lat, geo.lng, city.lat, city.lng)
+    : null;
 
   return h('article', { className: 'pb-24 anim-fade-in' },
     // Hero image
@@ -588,13 +681,44 @@ function VenueDetail({ slug, lang, navigate }) {
       h(InfoBlock, { icon: 'directions_subway', title: t('toStadium', lang), content: city.transitToStadium }),
       h(InfoBlock, { icon: 'directions_transit', title: t('metro', lang), content: city.metro }),
 
-      // Open Maps CTA
-      h('a', {
-        href: mapsUrl,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-        className: 'btn-gold w-full flex items-center justify-center gap-2'
-      }, Icon('map'), t('openMaps', lang)),
+      // Open Maps CTAs (con o sin geolocation)
+      h('div', { className: 'space-y-2' },
+        // Si geo OK → directions desde mi ubicación + distancia
+        geo.lat != null && geo.lng != null && h('div', null,
+          h('a', {
+            href: dirUrl,
+            target: '_blank', rel: 'noopener noreferrer',
+            className: 'btn-gold w-full flex items-center justify-center gap-2'
+          }, Icon('near_me'), t('directionsFromMe', lang)),
+          distance != null && h('div', { className: 'text-center text-text-sec text-xs font-body mt-1' },
+            '📍 ', distance.toFixed(1), ' ', t('km', lang), ' ', t('distanceFromYou', lang)
+          )
+        ),
+
+        // Si NO ha pedido geo → botón para activar
+        !geo.requested && h('button', {
+          onClick: geo.request,
+          className: 'btn-ghost w-full flex items-center justify-center gap-2',
+          style: { borderColor: 'rgba(245,197,24,0.50)' }
+        }, Icon('my_location'), t('locateMe', lang), ' (', t('directionsTransit', lang), ')'),
+
+        // Si geo loading
+        geo.loading && h('div', {
+          className: 'w-full flex items-center justify-center gap-2 py-3 text-text-sec font-body text-sm'
+        }, h('div', { className: 'spinner' }), t('locating', lang)),
+
+        // Si geo error → mensaje pequeño
+        geo.requested && geo.error && !geo.loading && h('div', {
+          className: 'text-center text-amber-400 text-xs font-body py-2'
+        }, '⚠️ ', geo.error === 'denied' ? t('locationDenied', lang) : t('locationError', lang)),
+
+        // SIEMPRE: botón de búsqueda en Maps (fallback que abre Google Maps con el estadio)
+        h('a', {
+          href: mapsUrl,
+          target: '_blank', rel: 'noopener noreferrer',
+          className: (geo.lat != null ? 'btn-ghost' : 'btn-gold') + ' w-full flex items-center justify-center gap-2'
+        }, Icon('map'), t('openMaps', lang))
+      ),
 
       // Nearby (Google Places via /api/places)
       h(NearbyBlock, { lat: city.lat, lng: city.lng, type: 'hospital', label: t('nearbyHospitals', lang), icon: 'local_hospital', color: '#FF6B6B', lang }),
@@ -717,20 +841,42 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
     { role: 'assistant', content: welcome || t('chatWelcome', lang) }
   ]);
   const [input, setInput] = useState('');
+  const [file, setFile] = useState(null); // { name, base64, mimeType }
   const [sending, setSending] = useState(false);
   const scrollRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages, sending]);
 
+  const handleFileChange = (e) => {
+    const f = e.target.files?.[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const dataUrl = evt.target.result;
+      const commaIdx = dataUrl.indexOf(',');
+      const base64 = dataUrl.slice(commaIdx + 1);
+      const mimeType = f.type;
+      setFile({ name: f.name, base64, mimeType });
+    };
+    reader.readAsDataURL(f);
+  };
+
   const send = async () => {
     const text = input.trim();
-    if (!text || sending) return;
-    const next = [...messages, { role: 'user', content: text }];
+    if ((!text && !file) || sending) return;
+    
+    // Add text tag to message if file is attached
+    const content = text + (file ? `\n[Archivo adjunto: ${file.name}]` : '');
+    const next = [...messages, { role: 'user', content }];
     setMessages(next);
     setInput('');
+    const currentFile = file;
+    setFile(null); // Clear selected file
     setSending(true);
+
     try {
       const r = await fetch('/api/chat', {
         method: 'POST',
@@ -739,7 +885,9 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
           messages: next,
           systemPrompt,
           lang,
-          model: 'gemini-2.5-flash'
+          model: 'gemini-2.5-flash',
+          documentBase64: currentFile?.base64,
+          documentMimeType: currentFile?.mimeType
         })
       });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -766,7 +914,7 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
           h('div', {
             className: `max-w-[85%] rounded-2xl px-4 py-2.5 text-sm font-body whitespace-pre-wrap ${
               m.role === 'user'
-                ? 'bg-gold text-black'
+                ? 'bg-gold text-black shadow-gold-glow'
                 : 'bg-card2 text-text-pri border border-white/5'
             }`
           }, m.content)
@@ -779,7 +927,26 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
         )
       )
     ),
-    h('div', { className: 'p-3 border-t border-white/5 flex gap-2' },
+    file && h('div', { className: 'px-4 py-2 bg-gold/10 border-t border-b border-gold/25 flex items-center justify-between text-xs font-body text-gold' },
+      h('span', { className: 'truncate max-w-[80%] flex items-center gap-1.5' }, Icon('attach_file', 'text-xs'), file.name),
+      h('button', { onClick: () => setFile(null), className: 'text-red hover:underline font-bold px-1' }, '✕')
+    ),
+    h('div', { className: 'p-3 border-t border-white/5 flex gap-2 items-center' },
+      h('input', {
+        type: 'file',
+        ref: fileInputRef,
+        onChange: handleFileChange,
+        accept: 'image/*,application/pdf',
+        className: 'hidden'
+      }),
+      h('button', {
+        onClick: () => fileInputRef.current?.click(),
+        disabled: sending,
+        className: `w-12 h-12 rounded-full flex items-center justify-center active:scale-95 border transition-all ${
+          file ? 'border-gold bg-gold/10 text-gold shadow-gold-glow' : 'border-white/10 text-text-sec'
+        }`,
+        title: lang === 'es' ? 'Adjuntar boleto o documento' : 'Attach ticket or document'
+      }, Icon('attach_file')),
       h('input', {
         type: 'text',
         value: input,
@@ -791,7 +958,7 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
       }),
       h('button', {
         onClick: send,
-        disabled: sending || !input.trim(),
+        disabled: sending || (!input.trim() && !file),
         className: 'w-12 h-12 rounded-full bg-gold text-black flex items-center justify-center active:scale-95 disabled:opacity-40 disabled:active:scale-100'
       }, Icon('send'))
     )
@@ -817,7 +984,7 @@ function SOSView({ lang, navigate }) {
     // Llamar 911 prominente
     h('a', {
       href: 'tel:911',
-      className: 'block w-full rounded-2xl p-5 mb-6 text-center active:scale-95 transition-transform',
+      className: 'sos-pulse block w-full rounded-2xl p-5 mb-6 text-center active:scale-95 transition-transform',
       style: { background: 'linear-gradient(135deg, #FF6B6B 0%, #C0392B 100%)', boxShadow: '0 8px 32px rgba(192,57,43,0.40)' }
     },
       h('div', { className: 'impact text-white text-5xl' }, '911'),
@@ -876,7 +1043,7 @@ function ScenarioCard({ scenario, lang }) {
       ),
       Icon(open ? 'expand_less' : 'expand_more', 'text-text-sec')
     ),
-    open && h('ol', { className: 'px-4 pb-4 space-y-2' },
+    open && h('ol', { className: 'px-4 pb-4 space-y-2 anim-slide-down' },
       ...steps.map((step, i) =>
         h('li', { key: i, className: 'flex gap-3 text-sm font-body text-text-pri' },
           h('span', { className: 'text-gold font-bold flex-shrink-0' }, i + 1, '.'),
@@ -918,11 +1085,15 @@ function BottomNav({ route, navigate, lang }) {
   13. Vista Venues (lista completa)
    ───────────────────────────────────────────────────────────────────────── */
 function VenuesView({ lang, navigate }) {
-  const { data, loading, error } = useFetch('/data/cities.json', []);
+  const { data, loading, error, refetch } = useFetch('/data/cities.json', []);
   const [filter, setFilter] = useState('ALL');
 
   if (loading) return h('div', { className: 'min-h-[60vh] flex items-center justify-center' }, h('div', { className: 'spinner' }));
-  if (error) return h('div', { className: 'p-6 text-center text-text-sec' }, t('errorGeneric', lang));
+  if (error) return h('div', { className: 'min-h-[60vh] flex flex-col items-center justify-center px-6 text-center' },
+    h('div', { className: 'text-6xl mb-4' }, '⚽'),
+    h('p', { className: 'text-text-sec mb-4' }, t('errorGeneric', lang)),
+    h('button', { className: 'btn-gold', onClick: refetch }, t('retry', lang))
+  );
 
   const cities = data.cities;
   const filtered = filter === 'ALL' ? cities : cities.filter(c => c.country === filter);
@@ -948,7 +1119,7 @@ function VenuesView({ lang, navigate }) {
         h('button', {
           key: city.id,
           onClick: () => navigate(`sede/${city.id}`),
-          className: 'glass rounded-2xl p-4 text-left active:scale-[0.98] transition-transform',
+          className: `glass rounded-2xl p-4 text-left active:scale-[0.98] transition-transform glow-${city.country.toLowerCase()}`,
           style: { background: cityImage(city) }
         },
           h('div', { className: 'flex items-start justify-between mb-3' },

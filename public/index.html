@@ -210,21 +210,91 @@
     position: fixed; left: 0; right: 0; bottom: 0;
     z-index: 90;
     padding-bottom: var(--safe-bottom);
-    background: rgba(13,13,13,0.92);
-    backdrop-filter: blur(20px) saturate(1.4);
-    -webkit-backdrop-filter: blur(20px) saturate(1.4);
-    border-top: 1px solid var(--border);
+    background: rgba(13,13,13,0.75);
+    backdrop-filter: blur(24px) saturate(1.5);
+    -webkit-backdrop-filter: blur(24px) saturate(1.5);
+    border-top: 1px solid rgba(245,197,24,0.15);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
   }
   .bottom-nav-item {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     min-height: 60px; gap: 2px;
     color: var(--muted);
-    transition: color 200ms ease;
+    transition: color 200ms ease, transform 200ms ease;
+  }
+  .bottom-nav-item:active {
+    transform: scale(0.92);
   }
   .bottom-nav-item.active { color: var(--gold); }
   .bottom-nav-item .ms-icon { font-size: 26px; }
   .bottom-nav-item span { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; }
+
+  /* ─────── Country-specific Glow Shadows & SOS pulse ─────── */
+  .glow-us {
+    box-shadow: 0 10px 30px rgba(107,170,255,0.08), 0 0 20px rgba(107,170,255,0.04);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glow-us:hover {
+    box-shadow: 0 15px 35px rgba(107,170,255,0.18), 0 0 30px rgba(107,170,255,0.10);
+    transform: translateY(-4px);
+  }
+  .glow-ca {
+    box-shadow: 0 10px 30px rgba(255,107,107,0.08), 0 0 20px rgba(255,107,107,0.04);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glow-ca:hover {
+    box-shadow: 0 15px 35px rgba(255,107,107,0.18), 0 0 30px rgba(255,107,107,0.10);
+    transform: translateY(-4px);
+  }
+  .glow-mx {
+    box-shadow: 0 10px 30px rgba(26,190,92,0.08), 0 0 20px rgba(26,190,92,0.04);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glow-mx:hover {
+    box-shadow: 0 15px 35px rgba(26,190,92,0.18), 0 0 30px rgba(26,190,92,0.10);
+    transform: translateY(-4px);
+  }
+  .glow-gold {
+    box-shadow: 0 10px 30px rgba(245,197,24,0.08), 0 0 20px rgba(245,197,24,0.04);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .glow-gold:hover {
+    box-shadow: 0 15px 35px rgba(245,197,24,0.18), 0 0 30px rgba(245,197,24,0.10);
+    transform: translateY(-4px);
+  }
+
+  /* SOS button glow wave */
+  .sos-pulse {
+    position: relative;
+    overflow: visible;
+  }
+  .sos-pulse::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    border: 3px solid #FF6B6B;
+    animation: sosPulseWave 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    pointer-events: none;
+  }
+  @keyframes sosPulseWave {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.06, 1.15);
+      opacity: 0;
+    }
+  }
+
+  /* Animated Hero Background light rays */
+  .hero-radial-animated {
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 20%), rgba(245,197,24,0.15) 0%, transparent 60%);
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
 
   /* ─────── Material Symbols ─────── */
   .ms-icon {
