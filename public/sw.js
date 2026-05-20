@@ -7,7 +7,7 @@
    - Imágenes → cache-first
    ═══════════════════════════════════════════════════════════════════════════ */
 
-const VERSION = 'wch-v1.0.0';
+const VERSION = 'wch-v1.0.1';
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 
