@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.1",
+    "version": "1.2",
     "updated": "2026-05-20",
     "source": "worldcup2026-guide-v2.md",
     "tournament": "FIFA World Cup 26",
@@ -21,13 +21,37 @@
       "cityImage": "/img/cities/us-newyork-city.jpg",
       "stadiumImage": "/img/cities/us-newyork-stadium.jpg",
       "homeTeams": "New York Giants (NFL) · New York Jets (NFL)",
-      "history": "Sede de la final de la Copa América Centenario 2016 y del Super Bowl XLVIII. Sede elegida para la Gran Final del Mundial 2026 el 19 de julio de 2026.",
+      "history": {
+        "es": "Sede de la final de la Copa América Centenario 2016 y del Super Bowl XLVIII. Elegido para albergar la Gran Final del Mundial 2026 el 19 de julio de 2026.",
+        "en": "Hosted the 2016 Copa América Centenario final and Super Bowl XLVIII. Selected to host the 2026 World Cup Grand Final on July 19, 2026.",
+        "fr": "A accueilli la finale de la Copa América Centenario 2016 et le Super Bowl XLVIII. Choisi pour accueillir la Grande Finale de la Coupe du Monde 2026 le 19 juillet 2026.",
+        "pt": "Sediou a final da Copa América Centenário 2016 e o Super Bowl XLVIII. Escolhido para sediar a Grande Final da Copa do Mundo 2026 em 19 de julho de 2026.",
+        "de": "Austragungsort des Copa América Centenario-Finales 2016 und des Super Bowl XLVIII. Ausgewählt als Gastgeber des WM-Großfinals 2026 am 19. Juli 2026."
+      },
       "tz": "America/New_York",
       "lang": "en",
       "airport": "JFK / EWR",
-      "transit": "AirTrain (JFK) · NJ Transit (EWR) — evita taxis no autorizados",
-      "transitToStadium": "NJ Transit Meadowlands Rail Line — directo en días de partido",
-      "metro": "MTA Subway (24/7) · OMNY card",
+      "transit": {
+        "es": "AirTrain (JFK) · NJ Transit (EWR) — evita taxis no autorizados",
+        "en": "AirTrain (JFK) · NJ Transit (EWR) — avoid unofficial taxis",
+        "fr": "AirTrain (JFK) · NJ Transit (EWR) — évitez les taxis non officiels",
+        "pt": "AirTrain (JFK) · NJ Transit (EWR) — evite táxis não autorizados",
+        "de": "AirTrain (JFK) · NJ Transit (EWR) — inoffizielle Taxis meiden"
+      },
+      "transitToStadium": {
+        "es": "NJ Transit Meadowlands Rail Line — servicio directo los días de partido",
+        "en": "NJ Transit Meadowlands Rail Line — direct service on match days from Secaucus Junction",
+        "fr": "NJ Transit Meadowlands Rail Line — service direct les jours de match depuis Secaucus Junction",
+        "pt": "NJ Transit Meadowlands Rail Line — serviço direto nos dias de jogo a partir de Secaucus Junction",
+        "de": "NJ Transit Meadowlands Rail Line — Direktverbindung an Spieltagen ab Secaucus Junction"
+      },
+      "metro": {
+        "es": "MTA Subway (24/7) · tarjeta OMNY",
+        "en": "MTA Subway (24/7) · OMNY card",
+        "fr": "MTA Subway (24h/24) · carte OMNY",
+        "pt": "MTA Subway (24h) · cartão OMNY",
+        "de": "MTA Subway (24/7) · OMNY-Karte"
+      },
       "lat": 40.8135,
       "lng": -74.0745,
       "mapsQuery": "MetLife Stadium East Rutherford NJ"
@@ -44,13 +68,37 @@
       "cityImage": "/img/cities/us-dallas-city.jpg",
       "stadiumImage": "/img/cities/us-dallas-stadium.jpg",
       "homeTeams": "Dallas Cowboys (NFL)",
-      "history": "Conocido mundialmente como 'Jerry World'. Cuenta con una de las pantallas colgantes gigantes más grandes del mundo y techo retráctil. Sede de múltiples peleas de boxeo estelares y del Super Bowl XLV.",
+      "history": {
+        "es": "Conocido mundialmente como 'Jerry World'. Tiene una de las pantallas colgantes más grandes del mundo y techo retráctil. Sede de múltiples peleas de boxeo estelares y del Super Bowl XLV.",
+        "en": "Known worldwide as 'Jerry World'. Features one of the world's largest hanging screens and a retractable roof. Hosted major boxing events and Super Bowl XLV.",
+        "fr": "Connu dans le monde entier sous le nom de 'Jerry World'. Dispose d'un des plus grands écrans suspendus et d'un toit rétractable. A accueilli des combats de boxe et le Super Bowl XLV.",
+        "pt": "Conhecido mundialmente como 'Jerry World'. Possui um dos maiores telões suspensos do mundo e teto retrátil. Sediou grandes eventos de boxe e o Super Bowl XLV.",
+        "de": "Weltweit bekannt als 'Jerry World'. Verfügt über eine der größten Hängeleinwände der Welt und ein einziehbares Dach. Gastgeber großer Boxveranstaltungen und des Super Bowl XLV."
+      },
       "tz": "America/Chicago",
       "lang": "en",
       "airport": "DFW International",
-      "transit": "DART Rail Orange/Red Line (~45 min al centro)",
-      "transitToStadium": "Trinity Railway Express + shuttle game-day",
-      "metro": "DART (Dallas Area Rapid Transit)",
+      "transit": {
+        "es": "DART Rail Línea Orange/Red (~45 min al centro)",
+        "en": "DART Rail Orange/Red Line (~45 min to downtown Dallas)",
+        "fr": "DART Rail Ligne Orange/Red (~45 min du centre-ville)",
+        "pt": "DART Rail Linha Orange/Red (~45 min do centro)",
+        "de": "DART Rail Orange/Red Line (~45 Min. bis Downtown)"
+      },
+      "transitToStadium": {
+        "es": "Trinity Railway Express + shuttle el día del partido desde CentrePort",
+        "en": "Trinity Railway Express to CentrePort/DFW, then game-day shuttle to AT&T Stadium",
+        "fr": "Trinity Railway Express jusqu'à CentrePort/DFW, puis navette le jour du match",
+        "pt": "Trinity Railway Express até CentrePort/DFW, depois shuttle no dia do jogo",
+        "de": "Trinity Railway Express bis CentrePort/DFW, dann Spieltag-Shuttle zum Stadion"
+      },
+      "metro": {
+        "es": "DART (Dallas Area Rapid Transit)",
+        "en": "DART (Dallas Area Rapid Transit)",
+        "fr": "DART (Dallas Area Rapid Transit)",
+        "pt": "DART (Dallas Area Rapid Transit)",
+        "de": "DART (Dallas Area Rapid Transit)"
+      },
       "lat": 32.7473,
       "lng": -97.0945,
       "mapsQuery": "AT&T Stadium Arlington TX"
@@ -67,13 +115,37 @@
       "cityImage": "/img/cities/us-losangeles-city.jpg",
       "stadiumImage": "/img/cities/us-losangeles-stadium.jpg",
       "homeTeams": "Los Angeles Rams (NFL) · Los Angeles Chargers (NFL)",
-      "history": "El estadio más costoso y moderno del planeta, inaugurado en 2020. Cuenta con la pantalla circular 'The Oculus' y será sede de la ceremonia de apertura de los Juegos Olímpicos de 2028.",
+      "history": {
+        "es": "El estadio más costoso y moderno del planeta, inaugurado en 2020. Tiene la pantalla circular 'The Oculus' y será sede de la ceremonia de apertura de los Juegos Olímpicos de 2028.",
+        "en": "The most expensive modern stadium on the planet, opened in 2020. Features the circular 'Oculus' screen and will host the 2028 Olympic Games opening ceremony.",
+        "fr": "Le stade le plus cher et le plus moderne de la planète, inauguré en 2020. Dispose de l'écran circulaire 'The Oculus' et accueillera la cérémonie d'ouverture des JO 2028.",
+        "pt": "O estádio mais caro e moderno do planeta, inaugurado em 2020. Tem a tela circular 'The Oculus' e sediará a cerimônia de abertura dos Jogos Olímpicos de 2028.",
+        "de": "Das teuerste und modernste Stadion der Welt, eröffnet 2020. Hat den kreisförmigen 'Oculus'-Bildschirm und wird die Eröffnungszeremonie der Olympischen Spiele 2028 ausrichten."
+      },
       "tz": "America/Los_Angeles",
       "lang": "en",
       "airport": "LAX",
-      "transit": "FlyAway Bus · Rideshare en Lot C · Metro K Line",
-      "transitToStadium": "Metro K Line + shuttle game-day",
-      "metro": "LA Metro Rail · TAP Card",
+      "transit": {
+        "es": "FlyAway Bus · Rideshare en Lot C · Metro K Line",
+        "en": "FlyAway Bus · Rideshare at Lot C · Metro K Line to downtown",
+        "fr": "FlyAway Bus · Covoiturage au Lot C · Metro K Line vers le centre",
+        "pt": "FlyAway Bus · Rideshare no Lot C · Metro K Line para o centro",
+        "de": "FlyAway Bus · Rideshare am Lot C · Metro K Line in die Innenstadt"
+      },
+      "transitToStadium": {
+        "es": "Metro K Line (parada Inglewood) + shuttle el día del partido hasta SoFi",
+        "en": "Metro K Line to Inglewood station, then game-day shuttle to SoFi Stadium",
+        "fr": "Metro K Line jusqu'à la station Inglewood, puis navette le jour du match",
+        "pt": "Metro K Line até a estação Inglewood, depois shuttle no dia do jogo",
+        "de": "Metro K Line zur Station Inglewood, dann Spieltag-Shuttle zum SoFi Stadium"
+      },
+      "metro": {
+        "es": "LA Metro Rail · TAP Card",
+        "en": "LA Metro Rail · TAP Card",
+        "fr": "LA Metro Rail · TAP Card",
+        "pt": "LA Metro Rail · TAP Card",
+        "de": "LA Metro Rail · TAP Card"
+      },
       "lat": 33.9534,
       "lng": -118.3392,
       "mapsQuery": "SoFi Stadium Inglewood CA"
@@ -90,13 +162,37 @@
       "cityImage": "/img/cities/us-atlanta-city.jpg",
       "stadiumImage": "/img/cities/us-atlanta-stadium.jpg",
       "homeTeams": "Atlanta United FC (MLS) · Atlanta Falcons (NFL)",
-      "history": "Destaca por su techo retráctil en forma de pétalos que se abre como un obturador de cámara y su pantalla de halo circular de 360 grados única. Sede del Super Bowl LIII.",
+      "history": {
+        "es": "Destaca por su techo retráctil en forma de pétalos que se abre como un obturador de cámara y su pantalla de halo circular de 360 grados. Sede del Super Bowl LIII.",
+        "en": "Features a petal-shaped retractable roof that opens like a camera shutter and a unique 360° halo screen. Hosted Super Bowl LIII.",
+        "fr": "Dispose d'un toit rétractable en forme de pétales s'ouvrant comme un obturateur et d'un écran halo circulaire à 360°. A accueilli le Super Bowl LIII.",
+        "pt": "Possui teto retrátil em forma de pétalas que se abre como um obturador e uma tela halo circular de 360°. Sediou o Super Bowl LIII.",
+        "de": "Hat ein blütenblattförmiges Einziehsdach, das sich wie ein Kameraverschluss öffnet, und einen einzigartigen 360°-Halobildschirm. Gastgeber des Super Bowl LIII."
+      },
       "tz": "America/New_York",
       "lang": "en",
       "airport": "Hartsfield-Jackson (ATL)",
-      "transit": "Tren interno Plane Train hasta GWCC",
-      "transitToStadium": "MARTA Red/Gold Line — estación GWCC adyacente",
-      "metro": "MARTA · Breeze Card",
+      "transit": {
+        "es": "Tren interno Plane Train hasta el centro de la ciudad",
+        "en": "Internal Plane Train to GWCC, then MARTA to downtown",
+        "fr": "Train interne Plane Train jusqu'au GWCC, puis MARTA vers le centre",
+        "pt": "Trem interno Plane Train até o GWCC, depois MARTA para o centro",
+        "de": "Interner Plane Train zum GWCC, dann MARTA in die Innenstadt"
+      },
+      "transitToStadium": {
+        "es": "MARTA Línea Red/Gold — estación GWCC/Vine City adyacente al estadio",
+        "en": "MARTA Red/Gold Line — GWCC/Vine City station, adjacent to Mercedes-Benz Stadium",
+        "fr": "MARTA Ligne Red/Gold — station GWCC/Vine City, adjacente au stade",
+        "pt": "MARTA Linha Red/Gold — estação GWCC/Vine City, adjacente ao estádio",
+        "de": "MARTA Red/Gold Line — Station GWCC/Vine City, direkt neben dem Stadion"
+      },
+      "metro": {
+        "es": "MARTA · Breeze Card",
+        "en": "MARTA · Breeze Card",
+        "fr": "MARTA · Breeze Card",
+        "pt": "MARTA · Breeze Card",
+        "de": "MARTA · Breeze Card"
+      },
       "lat": 33.7553,
       "lng": -84.4006,
       "mapsQuery": "Mercedes-Benz Stadium Atlanta"
@@ -113,13 +209,37 @@
       "cityImage": "/img/cities/us-sfbay-city.jpg",
       "stadiumImage": "/img/cities/us-sfbay-stadium.jpg",
       "homeTeams": "San Francisco 49ers (NFL)",
-      "history": "Estadio ecológico de alta tecnología inaugurado en 2014. Cuenta con certificación LEED oro. Sede del Super Bowl 50 y de partidos clave de la Copa América Centenario.",
+      "history": {
+        "es": "Estadio ecológico de alta tecnología inaugurado en 2014 con certificación LEED oro. Sede del Super Bowl 50 y de partidos clave de la Copa América Centenario.",
+        "en": "High-tech eco-friendly stadium opened in 2014. LEED Gold certified. Hosted Super Bowl 50 and key Copa América Centenario matches.",
+        "fr": "Stade écologique haute technologie ouvert en 2014, certifié LEED Or. A accueilli le Super Bowl 50 et des matchs clés de la Copa América Centenario.",
+        "pt": "Estádio ecológico de alta tecnologia inaugurado em 2014, certificado LEED Ouro. Sediou o Super Bowl 50 e jogos da Copa América Centenário.",
+        "de": "High-Tech-Öko-Stadion, eröffnet 2014, LEED-Gold-zertifiziert. Gastgeber des Super Bowl 50 und wichtiger Copa América Centenario-Spiele."
+      },
       "tz": "America/Los_Angeles",
       "lang": "en",
       "airport": "SFO / SJC",
-      "transit": "BART desde SFO · VTA Light Rail desde SJC",
-      "transitToStadium": "VTA Light Rail estación Mountain View — Tasman East",
-      "metro": "BART · VTA",
+      "transit": {
+        "es": "BART desde SFO · VTA Light Rail desde SJC",
+        "en": "BART from SFO (Millbrae transfer) · VTA Light Rail from SJC",
+        "fr": "BART depuis SFO (correspondance Millbrae) · VTA Light Rail depuis SJC",
+        "pt": "BART a partir de SFO (baldeação em Millbrae) · VTA Light Rail de SJC",
+        "de": "BART ab SFO (Umstieg Millbrae) · VTA Light Rail ab SJC"
+      },
+      "transitToStadium": {
+        "es": "VTA Light Rail — dirección Tasman East hasta parada Great America",
+        "en": "VTA Light Rail (Tasman East direction) — Great America station, adjacent to Levi's Stadium",
+        "fr": "VTA Light Rail (direction Tasman East) — station Great America, adjacente au stade",
+        "pt": "VTA Light Rail (direção Tasman East) — estação Great America, ao lado do estádio",
+        "de": "VTA Light Rail (Richtung Tasman East) — Station Great America, direkt neben dem Stadion"
+      },
+      "metro": {
+        "es": "BART · VTA Light Rail",
+        "en": "BART · VTA Light Rail",
+        "fr": "BART · VTA Light Rail",
+        "pt": "BART · VTA Light Rail",
+        "de": "BART · VTA Light Rail"
+      },
       "lat": 37.4031,
       "lng": -121.9697,
       "mapsQuery": "Levis Stadium Santa Clara CA"
@@ -136,13 +256,37 @@
       "cityImage": "/img/cities/us-boston-city.jpg",
       "stadiumImage": "/img/cities/us-boston-stadium.jpg",
       "homeTeams": "New England Patriots (NFL) · New England Revolution (MLS)",
-      "history": "El hogar histórico de Tom Brady durante la dinastía dorada de los Patriots. Cuenta con un icónico faro y un puente de piedra en su cabecera norte.",
+      "history": {
+        "es": "El hogar histórico de Tom Brady durante la dinastía dorada de los Patriots. Tiene un icónico faro y un puente de piedra en su cabecera norte.",
+        "en": "Historic home of Tom Brady during the Patriots golden dynasty. Features an iconic lighthouse and stone bridge at its north end zone.",
+        "fr": "Le foyer historique de Tom Brady pendant la glorieuse dynastie des Patriots. Dispose d'un phare iconique et d'un pont en pierre à son extrémité nord.",
+        "pt": "Lar histórico de Tom Brady durante a dinastia dourada dos Patriots. Possui um farol icônico e uma ponte de pedra na cabeceira norte.",
+        "de": "Das historische Zuhause von Tom Brady während der goldenen Patriots-Dynastie. Hat einen ikonischen Leuchtturm und eine Steinbrücke in der Nordendzone."
+      },
       "tz": "America/New_York",
       "lang": "en",
       "airport": "Logan (BOS)",
-      "transit": "Silver Line Bus · MBTA Commuter Rail · Ferry",
-      "transitToStadium": "MBTA Commuter Rail — solo días de partido",
-      "metro": "MBTA",
+      "transit": {
+        "es": "Silver Line Bus · MBTA Commuter Rail · Ferry",
+        "en": "Silver Line Bus · MBTA Commuter Rail · Ferry",
+        "fr": "Silver Line Bus · MBTA Commuter Rail · Ferry",
+        "pt": "Silver Line Bus · MBTA Commuter Rail · Ferry",
+        "de": "Silver Line Bus · MBTA Commuter Rail · Fähre"
+      },
+      "transitToStadium": {
+        "es": "MBTA Commuter Rail (Línea Providence/Stoughton) — solo días de partido, directo a estación Foxboro",
+        "en": "MBTA Commuter Rail (Providence/Stoughton Line) — match days only, direct to Foxboro station",
+        "fr": "MBTA Commuter Rail (Ligne Providence/Stoughton) — jours de match uniquement, direct vers la station Foxboro",
+        "pt": "MBTA Commuter Rail (Linha Providence/Stoughton) — apenas dias de jogo, direto para a estação Foxboro",
+        "de": "MBTA Commuter Rail (Providence/Stoughton Line) — nur an Spieltagen, direkt zur Station Foxboro"
+      },
+      "metro": {
+        "es": "MBTA (CharlieCard)",
+        "en": "MBTA (CharlieCard)",
+        "fr": "MBTA (CharlieCard)",
+        "pt": "MBTA (CharlieCard)",
+        "de": "MBTA (CharlieCard)"
+      },
       "lat": 42.0909,
       "lng": -71.2643,
       "mapsQuery": "Gillette Stadium Foxborough MA"
@@ -159,13 +303,37 @@
       "cityImage": "/img/cities/us-philadelphia-city.jpg",
       "stadiumImage": "/img/cities/us-philadelphia-stadium.jpg",
       "homeTeams": "Philadelphia Eagles (NFL)",
-      "history": "Inaugurado en 2003, es famoso por su atmósfera ensordecedora y su diseño ecológico que incorpora turbinas eólicas y paneles solares para generar su propia energía.",
+      "history": {
+        "es": "Inaugurado en 2003, famoso por su atmósfera ensordecedora y su diseño ecológico con turbinas eólicas y paneles solares para generar su propia energía.",
+        "en": "Opened in 2003, famous for its deafening atmosphere and eco-friendly design with wind turbines and solar panels generating its own energy.",
+        "fr": "Ouvert en 2003, célèbre pour son ambiance assourdissante et sa conception écologique avec éoliennes et panneaux solaires produisant sa propre énergie.",
+        "pt": "Inaugurado em 2003, famoso pela sua atmosfera ensurdecedora e design ecológico com turbinas eólicas e painéis solares que geram sua própria energia.",
+        "de": "Eröffnet 2003, bekannt für seine ohrenbetäubende Atmosphäre und umweltfreundliches Design mit Windturbinen und Solarmodulen zur Eigenstromerzeugung."
+      },
       "tz": "America/New_York",
       "lang": "en",
       "airport": "PHL",
-      "transit": "SEPTA Regional Rail",
-      "transitToStadium": "SEPTA Broad Street Line — estación NRG",
-      "metro": "SEPTA · SEPTA Key card",
+      "transit": {
+        "es": "SEPTA Regional Rail desde el aeropuerto (30th Street Station)",
+        "en": "SEPTA Regional Rail from airport to 30th Street Station",
+        "fr": "SEPTA Regional Rail de l'aéroport jusqu'à 30th Street Station",
+        "pt": "SEPTA Regional Rail do aeroporto até 30th Street Station",
+        "de": "SEPTA Regional Rail vom Flughafen zur 30th Street Station"
+      },
+      "transitToStadium": {
+        "es": "SEPTA Broad Street Line (sur) — estación NRG, a poca distancia del estadio",
+        "en": "SEPTA Broad Street Line (Southbound) — NRG station, short walk to Lincoln Financial Field",
+        "fr": "SEPTA Broad Street Line (direction sud) — station NRG, courte marche jusqu'au stade",
+        "pt": "SEPTA Broad Street Line (sentido sul) — estação NRG, pequena caminhada até o estádio",
+        "de": "SEPTA Broad Street Line (südwärts) — Station NRG, kurzer Fußweg zum Stadion"
+      },
+      "metro": {
+        "es": "SEPTA · SEPTA Key card",
+        "en": "SEPTA · SEPTA Key card",
+        "fr": "SEPTA · SEPTA Key card",
+        "pt": "SEPTA · SEPTA Key card",
+        "de": "SEPTA · SEPTA Key card"
+      },
       "lat": 39.9008,
       "lng": -75.1675,
       "mapsQuery": "Lincoln Financial Field Philadelphia"
@@ -182,13 +350,37 @@
       "cityImage": "/img/cities/us-miami-city.jpg",
       "stadiumImage": "/img/cities/us-miami-stadium.jpg",
       "homeTeams": "Miami Dolphins (NFL) · Miami Hurricanes (NCAA)",
-      "history": "Multiusos legendario que ha albergado 6 Super Bowls, la final de la Copa América 2024 y torneos de tenis Masters 1000. Rodeado por el circuito oficial de Fórmula 1 de Miami.",
+      "history": {
+        "es": "Multiusos legendario que ha albergado 6 Super Bowls, la final de la Copa América 2024 y torneos de tenis Masters 1000. Rodeado por el circuito oficial de Fórmula 1 de Miami.",
+        "en": "Legendary multi-purpose venue. Hosted 6 Super Bowls, the 2024 Copa América final, and Masters 1000 tennis. Surrounded by the official Formula 1 Miami circuit.",
+        "fr": "Enceinte polyvalente légendaire. A accueilli 6 Super Bowls, la finale de la Copa América 2024 et le tennis Masters 1000. Entouré du circuit officiel de F1 de Miami.",
+        "pt": "Local multiuso lendário. Sediou 6 Super Bowls, a final da Copa América 2024 e torneios de tênis Masters 1000. Cercado pelo circuito oficial de F1 de Miami.",
+        "de": "Legendäre Multifunktionsarena. Gastgeber von 6 Super Bowls, dem Copa América 2024-Finale und Masters-1000-Tennis. Umgeben von der offiziellen Formel-1-Strecke Miami."
+      },
       "tz": "America/New_York",
       "lang": "en",
       "airport": "MIA",
-      "transit": "MIA Mover gratuito · Metrobus · Taxi regulado en zona oficial",
-      "transitToStadium": "Tri-Rail + shuttle game-day",
-      "metro": "Metrorail · Metromover (gratuito)",
+      "transit": {
+        "es": "MIA Mover (gratuito) · Metrobus · taxi regulado en zonas oficiales",
+        "en": "MIA Mover (free) · Metrobus · regulated taxi at official zones only",
+        "fr": "MIA Mover (gratuit) · Metrobus · taxi réglementé aux zones officielles uniquement",
+        "pt": "MIA Mover (gratuito) · Metrobus · táxi regulamentado apenas em zonas oficiais",
+        "de": "MIA Mover (kostenlos) · Metrobus · geregeltes Taxi nur an offiziellen Zonen"
+      },
+      "transitToStadium": {
+        "es": "Tri-Rail (estación Miami Airport) + shuttle el día del partido hasta Hard Rock Stadium",
+        "en": "Tri-Rail (Miami Airport Station) + game-day shuttle to Hard Rock Stadium",
+        "fr": "Tri-Rail (station Miami Airport) + navette le jour du match jusqu'au Hard Rock Stadium",
+        "pt": "Tri-Rail (estação Miami Airport) + shuttle no dia do jogo até o Hard Rock Stadium",
+        "de": "Tri-Rail (Bahnhof Miami Airport) + Spieltag-Shuttle zum Hard Rock Stadium"
+      },
+      "metro": {
+        "es": "Metrorail · Metromover (gratuito en el centro)",
+        "en": "Metrorail · Metromover (free downtown loop)",
+        "fr": "Metrorail · Metromover (boucle gratuite en centre-ville)",
+        "pt": "Metrorail · Metromover (circuito gratuito no centro)",
+        "de": "Metrorail · Metromover (kostenloser Downtown-Loop)"
+      },
       "lat": 25.958,
       "lng": -80.2389,
       "mapsQuery": "Hard Rock Stadium Miami Gardens"
@@ -205,13 +397,37 @@
       "cityImage": "/img/cities/us-houston-city.jpg",
       "stadiumImage": "/img/cities/us-houston-stadium.jpg",
       "homeTeams": "Houston Texans (NFL)",
-      "history": "El primer estadio de la NFL diseñado con techo retráctil. Ha sido sede de los Super Bowls XXXVIII y LI, además de albergar partidos de la Copa Oro de la Concacaf.",
+      "history": {
+        "es": "El primer estadio de la NFL diseñado con techo retráctil. Sede de los Super Bowls XXXVIII y LI, además de partidos de la Copa Oro de la CONCACAF.",
+        "en": "The first NFL stadium designed with a retractable roof. Hosted Super Bowls XXXVIII and LI, and multiple CONCACAF Gold Cup matches.",
+        "fr": "Premier stade NFL conçu avec un toit rétractable. A accueilli les Super Bowls XXXVIII et LI, ainsi que des matchs de la Gold Cup CONCACAF.",
+        "pt": "O primeiro estádio da NFL projetado com teto retrátil. Sediou os Super Bowls XXXVIII e LI e múltiplos jogos da Copa Ouro da CONCACAF.",
+        "de": "Das erste NFL-Stadion mit einziehbarem Dach. Austragungsort der Super Bowls XXXVIII und LI sowie mehrerer CONCACAF Gold Cup-Spiele."
+      },
       "tz": "America/Chicago",
       "lang": "en",
       "airport": "IAH / HOU",
-      "transit": "Taxi / Rideshare — no hay tren directo, planea tiempo extra",
-      "transitToStadium": "METRORail Red Line — estación NRG Park",
-      "metro": "METRORail",
+      "transit": {
+        "es": "Taxi / Rideshare — sin tren directo desde el aeropuerto, planea tiempo extra",
+        "en": "Taxi / Rideshare — no direct train from airport, allow extra travel time",
+        "fr": "Taxi / Covoiturage — pas de train direct depuis l'aéroport, prévoir du temps supplémentaire",
+        "pt": "Táxi / Rideshare — sem trem direto do aeroporto, planeje tempo extra",
+        "de": "Taxi / Rideshare — kein Direktzug vom Flughafen, Pufferzeit einplanen"
+      },
+      "transitToStadium": {
+        "es": "METRORail Línea Red (sur) — estación NRG Park, adyacente al estadio",
+        "en": "METRORail Red Line (Southbound) — NRG Park station, adjacent to NRG Stadium",
+        "fr": "METRORail Ligne Rouge (direction sud) — station NRG Park, adjacente au stade",
+        "pt": "METRORail Linha Vermelha (sentido sul) — estação NRG Park, adjacente ao estádio",
+        "de": "METRORail Red Line (südwärts) — Station NRG Park, direkt neben dem Stadion"
+      },
+      "metro": {
+        "es": "METRORail (Q Card)",
+        "en": "METRORail (Q Card)",
+        "fr": "METRORail (Q Card)",
+        "pt": "METRORail (Q Card)",
+        "de": "METRORail (Q Card)"
+      },
       "lat": 29.6847,
       "lng": -95.4107,
       "mapsQuery": "NRG Stadium Houston TX"
@@ -228,13 +444,37 @@
       "cityImage": "/img/cities/us-kansascity-city.jpg",
       "stadiumImage": "/img/cities/us-kansascity-stadium.jpg",
       "homeTeams": "Kansas City Chiefs (NFL)",
-      "history": "Registró el récord Guinness del estadio abierto más ruidoso del planeta con 142.2 decibelios en 2014. Fortín de Patrick Mahomes y los multicampeones Chiefs de la NFL.",
+      "history": {
+        "es": "Registró el récord Guinness del estadio abierto más ruidoso del planeta con 142.2 decibelios en 2014. Fortaleza de Patrick Mahomes y los multicampeones Chiefs de la NFL.",
+        "en": "Set the Guinness World Record for loudest open-air stadium at 142.2 dB in 2014. Home fortress of Patrick Mahomes and the Kansas City Chiefs dynasty.",
+        "fr": "A établi le record Guinness du stade en plein air le plus bruyant avec 142,2 dB en 2014. Forteresse de Patrick Mahomes et des Chiefs de Kansas City.",
+        "pt": "Estabeleceu o recorde Guinness de estádio a céu aberto mais barulhento com 142,2 dB em 2014. Fortaleza de Patrick Mahomes e a dinastia dos Kansas City Chiefs.",
+        "de": "Stellte 2014 den Guinness-Weltrekord als lautestes Freiluft-Stadion mit 142,2 dB auf. Festung von Patrick Mahomes und der Kansas City Chiefs-Dynastie."
+      },
       "tz": "America/Chicago",
       "lang": "en",
       "airport": "MCI",
-      "transit": "Taxi / Rideshare",
-      "transitToStadium": "Game-day shuttles desde Truman Sports Complex",
-      "metro": "KC Streetcar (limitado)",
+      "transit": {
+        "es": "Taxi / Rideshare (sin tren directo desde el aeropuerto)",
+        "en": "Taxi / Rideshare (no direct rail from MCI airport)",
+        "fr": "Taxi / Covoiturage (pas de train direct depuis l'aéroport MCI)",
+        "pt": "Táxi / Rideshare (sem trem direto do aeroporto MCI)",
+        "de": "Taxi / Rideshare (kein Direktzug vom MCI-Flughafen)"
+      },
+      "transitToStadium": {
+        "es": "Shuttles el día del partido desde Truman Sports Complex — sigue las señales en días de partido",
+        "en": "Game-day shuttles from Truman Sports Complex — follow signs on match days",
+        "fr": "Navettes le jour du match depuis Truman Sports Complex — suivre les indications",
+        "pt": "Shuttles no dia do jogo a partir do Truman Sports Complex — siga as placas",
+        "de": "Spieltag-Shuttles vom Truman Sports Complex — den Schildern folgen"
+      },
+      "metro": {
+        "es": "KC Streetcar (recorrido limitado en el centro)",
+        "en": "KC Streetcar (limited downtown route only)",
+        "fr": "KC Streetcar (itinéraire limité au centre-ville)",
+        "pt": "KC Streetcar (trajeto limitado ao centro)",
+        "de": "KC Streetcar (begrenzter Downtown-Strecke)"
+      },
       "lat": 39.0489,
       "lng": -94.4839,
       "mapsQuery": "Arrowhead Stadium Kansas City"
@@ -251,13 +491,37 @@
       "cityImage": "/img/cities/us-seattle-city.jpg",
       "stadiumImage": "/img/cities/us-seattle-stadium.jpg",
       "homeTeams": "Seattle Sounders FC (MLS) · Seattle Seahawks (NFL)",
-      "history": "Diseñado con dos enormes tribunas de arco que canalizan el ruido hacia el campo, haciéndolo increíblemente hostil para los visitantes. Aquí los Sounders ganaron la Concachampions ante 68,000 espectadores.",
+      "history": {
+        "es": "Diseñado con dos enormes tribunas de arco que canalizan el ruido hacia el campo, haciéndolo increíblemente hostil para los visitantes. Aquí los Sounders ganaron la Concachampions ante 68,000 espectadores.",
+        "en": "Designed with two huge curved stands channeling crowd noise onto the field, making it incredibly hostile for visitors. The Sounders won Concachampions here before 68,000 fans.",
+        "fr": "Conçu avec deux immenses tribunes incurvées qui canalisent le bruit vers le terrain. Les Sounders y ont remporté la Concachampions devant 68 000 spectateurs.",
+        "pt": "Projetado com duas enormes tribunas curvas que canalizam o ruído para o campo. O Sounders venceu a Concachampions aqui diante de 68.000 torcedores.",
+        "de": "Entworfen mit zwei riesigen Kurventribünen, die den Lärm auf das Spielfeld leiten. Die Sounders gewannen hier die Concachampions vor 68.000 Zuschauern."
+      },
       "tz": "America/Los_Angeles",
       "lang": "en",
       "airport": "Sea-Tac (SEA)",
-      "transit": "Link Light Rail: 40 min al centro (~$3)",
-      "transitToStadium": "Link Light Rail — estación Stadium",
-      "metro": "Link Light Rail · ORCA Card",
+      "transit": {
+        "es": "Link Light Rail: 40 min al centro (~$3)",
+        "en": "Link Light Rail: 40 min to downtown Seattle (~$3)",
+        "fr": "Link Light Rail : 40 min jusqu'au centre-ville (~3$)",
+        "pt": "Link Light Rail: 40 min até o centro (~$3)",
+        "de": "Link Light Rail: 40 Min. bis Downtown (~3$)"
+      },
+      "transitToStadium": {
+        "es": "Link Light Rail (Línea 1, sur) — estación Stadium, directamente al lado de Lumen Field",
+        "en": "Link Light Rail (Line 1, Southbound) — Stadium station, directly next to Lumen Field",
+        "fr": "Link Light Rail (Ligne 1, direction sud) — station Stadium, juste à côté de Lumen Field",
+        "pt": "Link Light Rail (Linha 1, sentido sul) — estação Stadium, ao lado de Lumen Field",
+        "de": "Link Light Rail (Linie 1, südwärts) — Station Stadium, direkt neben Lumen Field"
+      },
+      "metro": {
+        "es": "Link Light Rail · ORCA Card",
+        "en": "Link Light Rail · ORCA Card",
+        "fr": "Link Light Rail · ORCA Card",
+        "pt": "Link Light Rail · ORCA Card",
+        "de": "Link Light Rail · ORCA Card"
+      },
       "lat": 47.5952,
       "lng": -122.3316,
       "mapsQuery": "Lumen Field Seattle WA"
@@ -274,13 +538,37 @@
       "cityImage": "/img/cities/ca-vancouver-city.jpg",
       "stadiumImage": "/img/cities/ca-vancouver-stadium.jpg",
       "homeTeams": "Vancouver Whitecaps FC (MLS) · BC Lions (CFL)",
-      "history": "Estadio techado remodelado en 2011 con un sistema de soporte por cables. Fue la sede principal de los Juegos Olímpicos de Invierno 2010 y albergó la final del Mundial Femenino FIFA 2015.",
+      "history": {
+        "es": "Estadio techado remodelado en 2011 con sistema de soporte por cables. Fue la sede principal de los Juegos Olímpicos de Invierno 2010 y albergó la final del Mundial Femenino FIFA 2015.",
+        "en": "Cable-supported domed stadium renovated in 2011. Main venue of the 2010 Winter Olympics and host of the FIFA Women's World Cup Final in 2015.",
+        "fr": "Stade à dôme rénové en 2011 avec un système de câbles porteurs. A été le lieu principal des JO d'Hiver 2010 et a accueilli la finale de la Coupe du Monde Féminine FIFA 2015.",
+        "pt": "Estádio com cúpula suportada por cabos, renovado em 2011. Principal local dos Jogos Olímpicos de Inverno de 2010 e sede da final da Copa do Mundo Feminina FIFA 2015.",
+        "de": "Kabelunterstütztes Kuppelstadion, renoviert 2011. Hauptaustragungsort der Olympischen Winterspiele 2010 und Gastgeber des FIFA Frauen-WM-Finales 2015."
+      },
       "tz": "America/Vancouver",
       "lang": "en",
       "airport": "YVR",
-      "transit": "Canada Line SkyTrain: 25 min al centro ⭐ Excelente",
-      "transitToStadium": "SkyTrain Expo Line — estación Stadium-Chinatown",
-      "metro": "SkyTrain · Compass Card",
+      "transit": {
+        "es": "Canada Line SkyTrain: 25 min al centro ⭐ Excelente",
+        "en": "Canada Line SkyTrain: 25 min to downtown ⭐ Excellent transit",
+        "fr": "Canada Line SkyTrain : 25 min jusqu'au centre ⭐ Excellent",
+        "pt": "Canada Line SkyTrain: 25 min até o centro ⭐ Excelente",
+        "de": "Canada Line SkyTrain: 25 Min. bis Downtown ⭐ Ausgezeichnet"
+      },
+      "transitToStadium": {
+        "es": "SkyTrain Expo Line — estación Stadium-Chinatown, a 5 min a pie de BC Place",
+        "en": "SkyTrain Expo Line (Eastbound) — Stadium-Chinatown station, 5 min walk to BC Place",
+        "fr": "SkyTrain Expo Line (direction est) — station Stadium-Chinatown, 5 min à pied de BC Place",
+        "pt": "SkyTrain Expo Line (sentido leste) — estação Stadium-Chinatown, 5 min a pé do BC Place",
+        "de": "SkyTrain Expo Line (ostwärts) — Station Stadium-Chinatown, 5 Min. Fußweg zum BC Place"
+      },
+      "metro": {
+        "es": "SkyTrain · Compass Card",
+        "en": "SkyTrain · Compass Card",
+        "fr": "SkyTrain · Compass Card",
+        "pt": "SkyTrain · Compass Card",
+        "de": "SkyTrain · Compass Card"
+      },
       "lat": 49.2767,
       "lng": -123.1119,
       "mapsQuery": "BC Place Stadium Vancouver"
@@ -297,13 +585,37 @@
       "cityImage": "/img/cities/ca-toronto-city.jpg",
       "stadiumImage": "/img/cities/ca-toronto-stadium.jpg",
       "homeTeams": "Toronto FC (MLS) · Toronto Argonauts (CFL)",
-      "history": "El estadio específico de fútbol más importante de Canadá. Sede del Mundial Sub-20 de la FIFA 2007 y de la histórica coronación de Toronto FC en la MLS Cup.",
+      "history": {
+        "es": "El estadio específico de fútbol más importante de Canadá. Sede del Mundial Sub-20 de la FIFA 2007 y de la histórica coronación de Toronto FC en la MLS Cup.",
+        "en": "Canada's premier football-specific stadium. Hosted the FIFA U-20 World Cup 2007 and the historic Toronto FC MLS Cup championship.",
+        "fr": "Le principal stade dédié au football au Canada. A accueilli la Coupe du Monde FIFA U-20 2007 et le titre historique du Toronto FC en MLS Cup.",
+        "pt": "O principal estádio de futebol dedicado do Canadá. Sediou a Copa do Mundo FIFA Sub-20 2007 e o histórico título do Toronto FC na MLS Cup.",
+        "de": "Kanadas wichtigstes reines Fußballstadion. Gastgeber der FIFA U-20-WM 2007 und der historischen Toronto FC MLS Cup-Meisterschaft."
+      },
       "tz": "America/Toronto",
       "lang": "en",
       "airport": "Pearson (YYZ)",
-      "transit": "UP Express: 25 min a Union Station · GO Transit bus",
-      "transitToStadium": "TTC Streetcar 509/511 + shuttle desde Exhibition GO",
-      "metro": "TTC · PRESTO Card",
+      "transit": {
+        "es": "UP Express: 25 min a Union Station · GO Transit bus",
+        "en": "UP Express: 25 min to Union Station · GO Transit bus",
+        "fr": "UP Express : 25 min jusqu'à Union Station · bus GO Transit",
+        "pt": "UP Express: 25 min até Union Station · ônibus GO Transit",
+        "de": "UP Express: 25 Min. bis Union Station · GO Transit Bus"
+      },
+      "transitToStadium": {
+        "es": "TTC Streetcar 509/511 desde Union Station hasta Exhibition Loop, luego caminata corta a BMO Field",
+        "en": "TTC Streetcar 509/511 from Union Station to Exhibition Loop, short walk to BMO Field",
+        "fr": "TTC Streetcar 509/511 depuis Union Station jusqu'à Exhibition Loop, courte marche jusqu'à BMO Field",
+        "pt": "TTC Streetcar 509/511 de Union Station até Exhibition Loop, pequena caminhada até BMO Field",
+        "de": "TTC Streetcar 509/511 ab Union Station bis Exhibition Loop, kurzer Fußweg zum BMO Field"
+      },
+      "metro": {
+        "es": "TTC · PRESTO Card",
+        "en": "TTC · PRESTO Card",
+        "fr": "TTC · PRESTO Card",
+        "pt": "TTC · PRESTO Card",
+        "de": "TTC · PRESTO Card"
+      },
       "lat": 43.6332,
       "lng": -79.4185,
       "mapsQuery": "BMO Field Toronto Ontario"
@@ -320,13 +632,37 @@
       "cityImage": "/img/cities/mx-cdmx-city.jpg",
       "stadiumImage": "/img/cities/mx-cdmx-stadium.jpg",
       "homeTeams": "Club América (Liga MX) · Selección Mexicana de Fútbol",
-      "history": "El Coloso de Santa Úrsula. Único estadio en la historia en hospedar tres partidos de inauguración de la Copa del Mundo (1970, 1986, 2026). Aquí Pelé alzó la copa en el 70 y Maradona marcó la 'Mano de Dios' y el 'Gol del Siglo' a Inglaterra en el 86.",
+      "history": {
+        "es": "El Coloso de Santa Úrsula. Único estadio en la historia en hospedar tres partidos de inauguración de la Copa del Mundo (1970, 1986, 2026). Aquí Pelé alzó la copa en el 70 y Maradona marcó la 'Mano de Dios' y el 'Gol del Siglo' a Inglaterra en el 86.",
+        "en": "The Colossus of Santa Úrsula. The only stadium in history to host three World Cup opening matches (1970, 1986, 2026). Pelé lifted the trophy here in 1970, Maradona scored the Hand of God and Goal of the Century against England in 1986.",
+        "fr": "Le Colosse de Santa Úrsula. Le seul stade de l'histoire à accueillir trois matchs d'ouverture de la Coupe du Monde (1970, 1986, 2026). Pelé y a levé le trophée en 1970, Maradona y a inscrit la Main de Dieu et le But du Siècle en 1986.",
+        "pt": "O Coliseu de Santa Úrsula. O único estádio da história a sediar três jogos de abertura da Copa do Mundo (1970, 1986, 2026). Pelé levantou a taça aqui em 1970, Maradona marcou a Mão de Deus e o Gol do Século contra a Inglaterra em 1986.",
+        "de": "Der Koloss von Santa Úrsula. Das einzige Stadion der Geschichte, das drei WM-Eröffnungsspiele ausgetragen hat (1970, 1986, 2026). Pelé hob hier 1970 den Pokal, Maradona erzielte 1986 die Hand Gottes und das Tor des Jahrhunderts gegen England."
+      },
       "tz": "America/Mexico_City",
       "lang": "es",
       "airport": "AICM / AIFA",
-      "transit": "AICM: Metro Línea 5 + taxi voucher · AIFA: autobús a terminal",
-      "transitToStadium": "Tren Ligero estación Estadio Azteca",
-      "metro": "Metro CDMX · Metrobús · Tarjeta de movilidad",
+      "transit": {
+        "es": "AICM: Metro Línea 5 + taxi voucher · AIFA: autobús a terminal",
+        "en": "AICM: Metro Line 5 + taxi voucher · AIFA: shuttle bus to terminal",
+        "fr": "AICM : Metro Ligne 5 + taxi voucher · AIFA : navette vers le terminal",
+        "pt": "AICM: Metro Linha 5 + vale táxi · AIFA: ônibus shuttle até o terminal",
+        "de": "AICM: Metro Linie 5 + Taxi-Voucher · AIFA: Shuttlebus zum Terminal"
+      },
+      "transitToStadium": {
+        "es": "Tren Ligero — estación Estadio Azteca, directamente en el estadio",
+        "en": "Tren Ligero (Light Rail) — Estadio Azteca station, right at the stadium entrance",
+        "fr": "Tren Ligero — station Estadio Azteca, directement à l'entrée du stade",
+        "pt": "Tren Ligero — estação Estadio Azteca, diretamente na entrada do estádio",
+        "de": "Tren Ligero — Station Estadio Azteca, direkt am Stadioneingang"
+      },
+      "metro": {
+        "es": "Metro CDMX · Metrobús · Tarjeta de movilidad",
+        "en": "Metro CDMX · Metrobús · Tarjeta de movilidad (mobility card)",
+        "fr": "Metro CDMX · Metrobús · Tarjeta de movilidad (carte de mobilité)",
+        "pt": "Metro CDMX · Metrobús · Tarjeta de movilidad (cartão de mobilidade)",
+        "de": "Metro CDMX · Metrobús · Tarjeta de movilidad (Mobilitätskarte)"
+      },
       "lat": 19.3029,
       "lng": -99.1505,
       "mapsQuery": "Estadio Azteca Ciudad de Mexico",
@@ -344,13 +680,37 @@
       "cityImage": "/img/cities/mx-monterrey-city.jpg",
       "stadiumImage": "/img/cities/mx-monterrey-stadium.jpg",
       "homeTeams": "Rayados de Monterrey (Liga MX)",
-      "history": "Apodado 'El Gigante de Acero' por su imponente estructura metálica. Ofrece una vista impresionante del icónico Cerro de la Silla desde las gradas del sector sur. Inaugurado en 2015.",
+      "history": {
+        "es": "Apodado 'El Gigante de Acero' por su imponente estructura metálica. Ofrece una vista impresionante del icónico Cerro de la Silla desde las gradas del sector sur. Inaugurado en 2015.",
+        "en": "Nicknamed 'The Steel Giant' for its imposing metallic structure. Offers a stunning view of the iconic Cerro de la Silla from the south stand. Opened in 2015.",
+        "fr": "Surnommé 'Le Géant d'Acier' pour son imposante structure métallique. Offre une vue imprenable sur le Cerro de la Silla depuis les gradins sud. Inauguré en 2015.",
+        "pt": "Apelidado de 'O Gigante de Aço' por sua imponente estrutura metálica. Oferece uma vista deslumbrante do icônico Cerro de la Silla das arquibancadas sul. Inaugurado em 2015.",
+        "de": "Spitzname 'Der Stahlriese' wegen seiner imposanten Metallstruktur. Bietet von der Südtribüne einen beeindruckenden Blick auf den Cerro de la Silla. Eröffnet 2015."
+      },
       "tz": "America/Monterrey",
       "lang": "es",
       "airport": "Monterrey Internacional (MTY)",
-      "transit": "Taxi oficial · Rideshare",
-      "transitToStadium": "Game-day shuttles · Rideshare",
-      "metro": "Metro MTY · MetroCard NL",
+      "transit": {
+        "es": "Taxi oficial · Rideshare (Uber/Cabify)",
+        "en": "Official taxi · Rideshare (Uber/Cabify)",
+        "fr": "Taxi officiel · Covoiturage (Uber/Cabify)",
+        "pt": "Táxi oficial · Rideshare (Uber/Cabify)",
+        "de": "Offizielles Taxi · Rideshare (Uber/Cabify)"
+      },
+      "transitToStadium": {
+        "es": "Shuttles el día del partido desde el centro · Rideshare recomendado",
+        "en": "Game-day shuttles from downtown · Rideshare (Uber/Cabify) recommended",
+        "fr": "Navettes le jour du match depuis le centre-ville · Covoiturage recommandé",
+        "pt": "Shuttles no dia do jogo a partir do centro · Rideshare recomendado",
+        "de": "Spieltag-Shuttles aus der Innenstadt · Rideshare empfohlen"
+      },
+      "metro": {
+        "es": "Metro MTY (Líneas 1 y 2) · MetroCard NL",
+        "en": "Metro MTY (Lines 1 & 2) · MetroCard NL",
+        "fr": "Metro MTY (Lignes 1 et 2) · MetroCard NL",
+        "pt": "Metro MTY (Linhas 1 e 2) · MetroCard NL",
+        "de": "Metro MTY (Linien 1 & 2) · MetroCard NL"
+      },
       "lat": 25.6692,
       "lng": -100.2444,
       "mapsQuery": "Estadio BBVA Monterrey"
@@ -367,13 +727,37 @@
       "cityImage": "/img/cities/mx-guadalajara-city.jpg",
       "stadiumImage": "/img/cities/mx-guadalajara-stadium.jpg",
       "homeTeams": "Chivas de Guadalajara (Liga MX)",
-      "history": "Inaugurado en 2010, simula la forma de un volcán coronado por una nube metálica. Albergó la final de ida de la Copa Libertadores de América 2010 y los Juegos Panamericanos 2011.",
+      "history": {
+        "es": "Inaugurado en 2010, simula la forma de un volcán coronado por una nube metálica. Albergó la final de ida de la Copa Libertadores 2010 y los Juegos Panamericanos 2011.",
+        "en": "Opened in 2010, designed to resemble a volcano topped by a metallic cloud. Hosted the 2010 Copa Libertadores Final first leg and the 2011 Pan American Games.",
+        "fr": "Inauguré en 2010, conçu pour ressembler à un volcan surmonté d'un nuage métallique. A accueilli le match aller de la finale de la Copa Libertadores 2010 et les Jeux panaméricains 2011.",
+        "pt": "Inaugurado em 2010, projetado para parecer um vulcão coberto por uma nuvem metálica. Sediou o jogo de ida da final da Copa Libertadores 2010 e os Jogos Pan-Americanos 2011.",
+        "de": "Eröffnet 2010, entworfen als Vulkan mit metallischer Wolke. Gastgeber des Hinspiels des Copa Libertadores-Finales 2010 und der Panamerikanischen Spiele 2011."
+      },
       "tz": "America/Mexico_City",
       "lang": "es",
       "airport": "Don Miguel Hidalgo (GDL)",
-      "transit": "Taxi regulado · Rideshare",
-      "transitToStadium": "Tren Ligero Línea 3 + shuttle",
-      "metro": "Tren Ligero (Líneas 1, 2, 3) · Mi Bici",
+      "transit": {
+        "es": "Taxi regulado · Rideshare (Uber/Cabify)",
+        "en": "Regulated taxi · Rideshare (Uber/Cabify)",
+        "fr": "Taxi réglementé · Covoiturage (Uber/Cabify)",
+        "pt": "Táxi regulamentado · Rideshare (Uber/Cabify)",
+        "de": "Geregeltes Taxi · Rideshare (Uber/Cabify)"
+      },
+      "transitToStadium": {
+        "es": "Tren Ligero Línea 3 (parada Periférico Norte) + shuttle al Estadio Akron",
+        "en": "Tren Ligero Line 3 (Periférico Norte stop) + game-day shuttle to Estadio Akron",
+        "fr": "Tren Ligero Ligne 3 (arrêt Periférico Norte) + navette le jour du match",
+        "pt": "Tren Ligero Linha 3 (parada Periférico Norte) + shuttle no dia do jogo",
+        "de": "Tren Ligero Linie 3 (Haltestelle Periférico Norte) + Spieltag-Shuttle zum Estadio Akron"
+      },
+      "metro": {
+        "es": "Tren Ligero (Líneas 1, 2, 3) · Mi Bici (bicicletas públicas)",
+        "en": "Tren Ligero (Lines 1, 2, 3) · Mi Bici (bike share)",
+        "fr": "Tren Ligero (Lignes 1, 2, 3) · Mi Bici (vélos en libre-service)",
+        "pt": "Tren Ligero (Linhas 1, 2, 3) · Mi Bici (bicicletas compartilhadas)",
+        "de": "Tren Ligero (Linien 1, 2, 3) · Mi Bici (Fahrradverleih)"
+      },
       "lat": 20.6817,
       "lng": -103.4625,
       "mapsQuery": "Estadio Akron Guadalajara",

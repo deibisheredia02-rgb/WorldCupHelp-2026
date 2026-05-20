@@ -163,10 +163,38 @@ const T = {
     fr: 'Fichier trop volumineux (max 3 Mo)',
     pt: 'Arquivo muito grande (máx. 3 MB)',
     de: 'Datei zu groß (max. 3 MB)'
+  },
+  stadiumSoul: {
+    es: 'Alma del Estadio',
+    en: 'Stadium Soul',
+    fr: 'Âme du Stade',
+    pt: 'Alma do Estádio',
+    de: 'Stadionseele'
+  },
+  cityNotFound: {
+    es: 'Ciudad no encontrada.',
+    en: 'City not found.',
+    fr: 'Ville introuvable.',
+    pt: 'Cidade não encontrada.',
+    de: 'Stadt nicht gefunden.'
+  },
+  chatTitle: {
+    es: 'Pregunta a la IA',
+    en: 'Ask the AI',
+    fr: 'Demandez à l\'IA',
+    pt: 'Pergunte à IA',
+    de: 'KI fragen'
   }
 };
 
 const t = (key, lang) => (T[key] && T[key][lang]) || (T[key] && T[key].en) || key;
+
+// Multilingual field resolver: handles both plain strings and {es,en,fr,pt,de} objects
+const ml = (val, lang) => {
+  if (!val) return '';
+  if (typeof val === 'object') return val[lang] || val.en || val.es || '';
+  return val;
+};
 
 /* ─────────────────────────────────────────────────────────────────────────
    2. Estado global ligero (lang + route)
@@ -655,7 +683,7 @@ function VenueDetail({ slug, lang, navigate }) {
   if (loading) return h('div', { className: 'min-h-[60vh] flex items-center justify-center' }, h('div', { className: 'spinner' }));
   if (error || !city) return h('div', { className: 'min-h-[60vh] flex flex-col items-center justify-center px-6 text-center' },
     h('div', { className: 'text-6xl mb-4' }, '⚽'),
-    h('p', { className: 'text-text-sec mb-4' }, error ? t('errorGeneric', lang) : 'Ciudad no encontrada / City not found.'),
+    h('p', { className: 'text-text-sec mb-4' }, error ? t('errorGeneric', lang) : t('cityNotFound', lang)),
     h('div', { className: 'flex gap-3' },
       error && h('button', { className: 'btn-gold', onClick: refetch }, t('retry', lang)),
       h('button', { className: 'btn-ghost', onClick: () => navigate('venues') }, '← ', t('navVenues', lang))
@@ -719,7 +747,7 @@ function VenueDetail({ slug, lang, navigate }) {
       h('div', { className: 'absolute top-0 right-0 w-32 h-32 rounded-full bg-gold/5 blur-3xl pointer-events-none' }),
       h('h3', { className: 'display text-lg text-gold flex items-center gap-2 mb-4 border-b border-white/10 pb-2' },
         Icon('sports_soccer', 'text-xl'),
-        lang === 'es' ? 'Alma del Estadio' : 'Stadium Soul'
+        t('stadiumSoul', lang)
       ),
       h('div', { className: 'space-y-4' },
         city.homeTeams && h('div', null,
@@ -731,16 +759,16 @@ function VenueDetail({ slug, lang, navigate }) {
         ),
         city.history && h('div', null,
           h('div', { className: 'text-text-mut text-xs uppercase tracking-widest font-body mb-1' }, t('historyLabel', lang)),
-          h('p', { className: 'text-text-sec font-body text-sm leading-relaxed' }, city.history)
+          h('p', { className: 'text-text-sec font-body text-sm leading-relaxed' }, ml(city.history, lang))
         )
       )
     ),
 
     // Transit blocks
     h('div', { className: 'px-4 mt-6 space-y-4' },
-      h(InfoBlock, { icon: 'flight', title: t('airport', lang), content: city.airport, sub: city.transit }),
-      h(InfoBlock, { icon: 'directions_subway', title: t('toStadium', lang), content: city.transitToStadium }),
-      h(InfoBlock, { icon: 'directions_transit', title: t('metro', lang), content: city.metro }),
+      h(InfoBlock, { icon: 'flight', title: t('airport', lang), content: city.airport, sub: ml(city.transit, lang) }),
+      h(InfoBlock, { icon: 'directions_subway', title: t('toStadium', lang), content: ml(city.transitToStadium, lang), highlight: true }),
+      h(InfoBlock, { icon: 'directions_transit', title: t('metro', lang), content: ml(city.metro, lang) }),
 
       // Open Maps CTAs (con o sin geolocation)
       h('div', { className: 'space-y-2' },
@@ -789,13 +817,22 @@ function VenueDetail({ slug, lang, navigate }) {
   );
 }
 
-function InfoBlock({ icon, title, content, sub }) {
-  return h('div', { className: 'glass rounded-2xl p-4 anim-fade-up' },
+function InfoBlock({ icon, title, content, sub, highlight }) {
+  return h('div', {
+    className: 'glass rounded-2xl p-4 anim-fade-up',
+    style: highlight ? { borderColor: 'rgba(245,197,24,0.35)', boxShadow: '0 0 0 1px rgba(245,197,24,0.15)' } : {}
+  },
     h('div', { className: 'flex items-start gap-3' },
-      h('div', { className: 'w-10 h-10 rounded-xl bg-gold/10 text-gold flex items-center justify-center flex-shrink-0' }, Icon(icon)),
+      h('div', {
+        className: 'w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0',
+        style: { backgroundColor: highlight ? 'rgba(245,197,24,0.15)' : 'rgba(245,197,24,0.08)', color: '#F5C518' }
+      }, Icon(icon)),
       h('div', { className: 'flex-1 min-w-0' },
-        h('div', { className: 'text-text-mut text-xs uppercase tracking-widest font-body mb-1' }, title),
-        h('div', { className: 'text-text-pri font-body font-bold text-sm' }, content),
+        h('div', { className: 'flex items-center gap-2 mb-1' },
+          h('div', { className: 'text-text-mut text-xs uppercase tracking-widest font-body' }, title),
+          highlight && h('span', { className: 'text-[9px] font-body font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider', style: { background: 'rgba(245,197,24,0.15)', color: '#F5C518' } }, '⭐')
+        ),
+        h('div', { className: 'text-text-pri font-body font-bold text-sm leading-snug' }, content),
         sub && h('div', { className: 'text-text-sec text-xs font-body mt-1' }, sub)
       )
     )
@@ -1335,13 +1372,18 @@ function HomeView({ lang, navigate }) {
   16. Vista Chat genérico
    ───────────────────────────────────────────────────────────────────────── */
 function ChatView({ lang }) {
-  const sysPrompt = lang === 'es'
-    ? 'Eres el asistente IA de WorldCupHelp 2026, una guía bilingüe para aficionados del Mundial de Fútbol 2026 en USA, Canadá y México (junio-julio 2026). Responde corto, claro y útil. Si la pregunta es sobre transporte, leyes, emergencias, dinero, clima, sedes o servicios — usa los datos que conoces sobre las 16 sedes y los 3 países. Si no sabes algo, dilo y sugiere consultar fuente oficial (FIFA, embajada, etc).'
-    : 'You are the AI assistant of WorldCupHelp 2026, a bilingual guide for 2026 FIFA World Cup fans in USA, Canada and Mexico (June-July 2026). Answer short, clear and useful. For transit, laws, emergencies, money, weather, venues or services questions — use what you know about the 16 host cities and 3 countries. If unsure, say so and suggest official source (FIFA, embassy, etc).';
+  const SYS = {
+    es: 'Eres el asistente IA de WorldCupHelp 2026, guía para aficionados del Mundial de Fútbol 2026 en USA, Canadá y México. Responde SIEMPRE en español, corto, claro y útil. Para transporte, leyes, emergencias, dinero, clima, sedes o servicios — usa los datos de las 16 sedes y los 3 países. Si no sabes algo, dilo y sugiere fuente oficial (FIFA, embajada, etc).',
+    en: 'You are the AI assistant of WorldCupHelp 2026, a guide for 2026 FIFA World Cup fans in USA, Canada and Mexico. ALWAYS answer in English, short and clear. For transit, laws, emergencies, money, weather, venues or services — use what you know about the 16 host cities and 3 countries. If unsure, say so and suggest official source (FIFA, embassy, etc).',
+    fr: 'Tu es l\'assistant IA de WorldCupHelp 2026, guide pour les fans de la Coupe du Monde 2026 aux USA, Canada et Mexique. Réponds TOUJOURS en français, de façon courte et utile. Pour le transport, les lois, les urgences, l\'argent, la météo ou les stades — utilise ta connaissance des 16 villes hôtes. Si incertain, dis-le et suggère une source officielle.',
+    pt: 'Você é o assistente IA do WorldCupHelp 2026, guia para fãs da Copa do Mundo 2026 nos EUA, Canadá e México. Responda SEMPRE em português, de forma curta e útil. Para transporte, leis, emergências, dinheiro, clima ou sedes — use seu conhecimento das 16 cidades-sede. Se não souber, diga e sugira fonte oficial.',
+    de: 'Du bist der KI-Assistent von WorldCupHelp 2026, einem Leitfaden für WM-2026-Fans in den USA, Kanada und Mexiko. Antworte IMMER auf Deutsch, kurz und hilfreich. Für Verkehr, Gesetze, Notfälle, Geld, Wetter oder Stadien — nutze dein Wissen über die 16 Gastgeberstädte. Wenn unsicher, sag es und empfehle eine offizielle Quelle.'
+  };
+  const sysPrompt = SYS[lang] || SYS.en;
   return h('section', { className: 'pb-24 pt-20 px-4' },
     h('div', { className: 'text-center mb-4' },
       h('div', { className: 'eyebrow mb-2' }, 'AI'),
-      h('h1', { className: 'display text-3xl text-text-pri' }, t('navChat', lang) === 'IA' ? 'Pregunta a la IA' : 'Ask the AI')
+      h('h1', { className: 'display text-3xl text-text-pri' }, t('chatTitle', lang))
     ),
     h(ChatBox, { systemPrompt: sysPrompt, lang })
   );
