@@ -297,11 +297,57 @@ const tagLabel = (tag, lang) => {
 
 const cityImage = (city) => {
   const images = {
+    'us-newyork': 'https://images.unsplash.com/photo-1522083165195-342750297f4e?auto=format&fit=crop&w=800&q=80',
+    'us-dallas': 'https://images.unsplash.com/photo-1549221295-8e7c10b4279e?auto=format&fit=crop&w=800&q=80',
+    'us-losangeles': 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80',
+    'us-atlanta': 'https://images.unsplash.com/photo-1575917649705-5b59afe1ec7a?auto=format&fit=crop&w=800&q=80',
+    'us-sfbay': 'https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=800&q=80',
+    'us-boston': 'https://images.unsplash.com/photo-1506751890006-ee5469f37b69?auto=format&fit=crop&w=800&q=80',
+    'us-philadelphia': 'https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=800&q=80',
+    'us-miami': 'https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=800&q=80',
+    'us-houston': 'https://images.unsplash.com/photo-1530089711124-9ca31fb9e863?auto=format&fit=crop&w=800&q=80',
+    'us-kansascity': 'https://images.unsplash.com/photo-1568971031336-d446961c028e?auto=format&fit=crop&w=800&q=80',
+    'us-seattle': 'https://images.unsplash.com/photo-1502175353174-a7aea0883ee9?auto=format&fit=crop&w=800&q=80',
+    'ca-vancouver': 'https://images.unsplash.com/photo-1560814304-4f05b62af116?auto=format&fit=crop&w=800&q=80',
+    'ca-toronto': 'https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=800&q=80',
+    'mx-cdmx': 'https://images.unsplash.com/photo-1512813583145-baaa340ef29f?auto=format&fit=crop&w=800&q=80',
+    'mx-monterrey': 'https://images.unsplash.com/photo-1582967788606-a171c1080cb0?auto=format&fit=crop&w=800&q=80',
+    'mx-guadalajara': 'https://images.unsplash.com/photo-1596144883441-df071fdf1272?auto=format&fit=crop&w=800&q=80'
+  };
+  const fallbacks = {
     US: '/img/cities/usa_stadium.png',
     CA: '/img/cities/can_stadium.png',
     MX: '/img/cities/mex_stadium.png'
   };
-  const imgUrl = images[city.country] || '/img/cities/usa_stadium.png';
+  const imgUrl = images[city.id] || fallbacks[city.country] || '/img/cities/usa_stadium.png';
+  return `linear-gradient(135deg, rgba(13, 13, 13, 0.45) 0%, rgba(13, 13, 13, 0.85) 100%), url("${imgUrl}") center/cover no-repeat`;
+};
+
+const stadiumImage = (city) => {
+  const images = {
+    'us-newyork': 'https://images.unsplash.com/photo-1568310065096-749e776e0339?auto=format&fit=crop&w=800&q=80',
+    'us-dallas': 'https://images.unsplash.com/photo-1551009175-15bdf9dcb580?auto=format&fit=crop&w=800&q=80',
+    'us-losangeles': 'https://images.unsplash.com/photo-1620802129796-0b3c6cd8ef16?auto=format&fit=crop&w=800&q=80',
+    'us-atlanta': 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80',
+    'us-sfbay': 'https://images.unsplash.com/photo-1574375927938-d5a98e8edd85?auto=format&fit=crop&w=800&q=80',
+    'us-boston': 'https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=800&q=80',
+    'us-philadelphia': 'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=800&q=80',
+    'us-miami': 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+    'us-houston': 'https://images.unsplash.com/photo-1530089711124-9ca31fb9e863?auto=format&fit=crop&w=800&q=80',
+    'us-kansascity': 'https://images.unsplash.com/photo-1593122497677-7098e945c7cc?auto=format&fit=crop&w=800&q=80',
+    'us-seattle': 'https://images.unsplash.com/photo-1477840149577-3362145558be?auto=format&fit=crop&w=800&q=80',
+    'ca-vancouver': 'https://images.unsplash.com/photo-1582298538104-fe2e74c27f59?auto=format&fit=crop&w=800&q=80',
+    'ca-toronto': 'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=800&q=80',
+    'mx-cdmx': 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+    'mx-monterrey': 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+    'mx-guadalajara': 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=800&q=80'
+  };
+  const fallbacks = {
+    US: '/img/cities/usa_stadium.png',
+    CA: '/img/cities/can_stadium.png',
+    MX: '/img/cities/mex_stadium.png'
+  };
+  const imgUrl = images[city.id] || fallbacks[city.country] || '/img/cities/usa_stadium.png';
   return `linear-gradient(135deg, rgba(13, 13, 13, 0.4) 0%, rgba(13, 13, 13, 0.85) 100%), url("${imgUrl}") center/cover no-repeat`;
 };
 
@@ -633,9 +679,9 @@ function VenueDetail({ slug, lang, navigate }) {
     // Hero image
     h('div', {
       className: 'relative w-full h-[44vh] min-h-[280px] overflow-hidden',
-      style: { background: cityImage(city) }
+      style: { background: stadiumImage(city) }
     },
-      h('div', { className: 'absolute inset-0 anim-ken-burns', style: { background: cityImage(city), opacity: 0.6 } }),
+      h('div', { className: 'absolute inset-0 anim-ken-burns', style: { background: stadiumImage(city), opacity: 0.6 } }),
       h('div', { className: 'absolute inset-0', style: { background: 'linear-gradient(to top, var(--dark) 0%, transparent 60%)' } }),
       h('button', {
         className: 'absolute top-20 left-4 z-10 w-11 h-11 glass-strong rounded-full flex items-center justify-center active:scale-95',
