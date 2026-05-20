@@ -116,6 +116,12 @@ const T = {
   sosTitle: { es: 'Emergencias', en: 'Emergencies', fr: 'Urgences', pt: 'Emergências', de: 'Notfälle' },
   sosCallNow: { es: 'LLAMAR AHORA', en: 'CALL NOW', fr: 'APPELER MAINTENANT', pt: 'LIGAR AGORA', de: 'JETZT ANRUFEN' },
   sosScenarios: { es: '¿Qué hacer si…?', en: 'What to do if…?', fr: 'Que faire si…?', pt: 'O que fazer se…?', de: 'Was tun, wenn…?' },
+  sosAll: { es: 'Todos', en: 'All', fr: 'Tous', pt: 'Todos', de: 'Alle' },
+  sosHostFilter: { es: 'Filtrar por país', en: 'Filter by country', fr: 'Filtrer par pays', pt: 'Filtrar por país', de: 'Nach Land filtern' },
+  sosYourConsulate: { es: 'Tu consulado', en: 'Your consulate', fr: 'Votre consulat', pt: 'Seu consulado', de: 'Ihr Konsulat' },
+  sosSelectNat: { es: 'Selecciona tu nacionalidad…', en: 'Select your nationality…', fr: 'Sélectionnez votre nationalité…', pt: 'Selecione sua nacionalidade…', de: 'Nationalität wählen…' },
+  sosOfficialSite: { es: 'Sitio oficial', en: 'Official website', fr: 'Site officiel', pt: 'Site oficial', de: 'Offizielle Website' },
+  sosEmbassyNote: { es: 'Sedes donde hay representación consular:', en: 'Host cities with consular representation:', fr: 'Villes hôtes avec représentation consulaire :', pt: 'Cidades-sede com representação consular:', de: 'Gastgeberstädte mit Konsulatvertretung:' },
   countdown: { es: 'al pitazo inicial', en: 'to kickoff', fr: 'avant le coup d\'envoi', pt: 'até o apito inicial', de: 'bis zum Anpfiff' },
   days: { es: 'días', en: 'days', fr: 'jours', pt: 'dias', de: 'Tage' },
   hours: { es: 'horas', en: 'hours', fr: 'heures', pt: 'horas', de: 'Stunden' },
@@ -1040,6 +1046,9 @@ function ChatBox({ systemPrompt, welcome, lang, color = '#F5C518' }) {
    ───────────────────────────────────────────────────────────────────────── */
 function SOSView({ lang, navigate }) {
   const { data, loading, error, refetch } = useFetch('/data/emergency.json', []);
+  const [hostFilter, setHostFilter] = useState(null);
+  const [natCode, setNatCode] = useState('');
+
   if (loading) return h('div', { className: 'min-h-[60vh] flex items-center justify-center' }, h('div', { className: 'spinner' }));
   if (error) return h('div', { className: 'min-h-[60vh] flex flex-col items-center justify-center px-6 text-center' },
     h('div', { className: 'text-6xl mb-4' }, '🆘'),
@@ -1047,8 +1056,20 @@ function SOSView({ lang, navigate }) {
     h('button', { className: 'btn-gold', onClick: refetch }, t('retry', lang))
   );
 
-  const countries = data?.byCountry || {};
+  const allCountries = data?.byCountry || {};
   const scenarios = data?.scenarios || [];
+  const embassies = data?.embassies || [];
+
+  const filteredCountries = Object.entries(allCountries).filter(([code]) => {
+    if (!hostFilter) return true;
+    return code === hostFilter;
+  });
+
+  const selectedEmbassy = embassies.find(e => e.code === natCode);
+
+  const hostColors = { US: '#6BAAFF', CA: '#FF6B6B', MX: '#1ABE5C' };
+  const hostFlags = { US: '🇺🇸', CA: '🇨🇦', MX: '🇲🇽' };
+  const hostLabels = { US: 'USA', CA: 'Canada', MX: 'México' };
 
   return h('section', { className: 'pb-24 pt-20 px-4 anim-fade-in' },
     h('div', { className: 'text-center mb-6' },
@@ -1066,9 +1087,31 @@ function SOSView({ lang, navigate }) {
       h('div', { className: 'text-white/90 text-sm font-body uppercase tracking-widest' }, t('sosCallNow', lang))
     ),
 
-    // Por país
+    // Filtros por país anfitrión
+    h('div', { className: 'mb-4' },
+      h('p', { className: 'text-text-sec text-xs uppercase tracking-widest mb-2 font-body' }, t('sosHostFilter', lang)),
+      h('div', { className: 'flex gap-2 flex-wrap' },
+        h('button', {
+          className: `pill ${!hostFilter ? 'active' : ''}`,
+          style: !hostFilter ? { background: 'rgba(245,197,24,0.2)', borderColor: '#F5C518', color: '#F5C518' } : {},
+          onClick: () => setHostFilter(null)
+        }, t('sosAll', lang)),
+        ...['US', 'CA', 'MX'].map(code =>
+          h('button', {
+            key: code,
+            className: 'pill',
+            style: hostFilter === code
+              ? { background: `${hostColors[code]}22`, borderColor: hostColors[code], color: hostColors[code] }
+              : {},
+            onClick: () => setHostFilter(hostFilter === code ? null : code)
+          }, hostFlags[code], ' ', hostLabels[code])
+        )
+      )
+    ),
+
+    // Números por país (filtrados)
     h('div', { className: 'space-y-3 mb-8' },
-      ...Object.entries(countries).map(([code, c]) =>
+      ...filteredCountries.map(([code, c]) =>
         h('div', { key: code, className: 'glass rounded-2xl p-4' },
           h('div', { className: 'flex items-center gap-2 mb-3' },
             h('span', { className: 'text-2xl' }, c.flag),
@@ -1088,6 +1131,42 @@ function SOSView({ lang, navigate }) {
               )
             )
           )
+        )
+      )
+    ),
+
+    // Selector de nacionalidad y consulado
+    embassies.length > 0 && h('div', { className: 'glass rounded-2xl p-4 mb-8' },
+      h('h2', { className: 'display text-lg text-text-pri mb-3' }, t('sosYourConsulate', lang)),
+      h('select', {
+        value: natCode,
+        onChange: e => setNatCode(e.target.value),
+        className: 'w-full rounded-xl px-3 py-2 text-sm font-body text-text-pri',
+        style: { background: '#222', border: '1px solid rgba(255,255,255,0.12)' }
+      },
+        h('option', { value: '' }, t('sosSelectNat', lang)),
+        ...embassies.map(e =>
+          h('option', { key: e.code, value: e.code },
+            `${e.flag} ${e.name[lang] || e.name.en}`
+          )
+        )
+      ),
+      selectedEmbassy && h('div', { className: 'mt-4 space-y-3' },
+        h('p', { className: 'text-text-sec text-xs font-body' }, t('sosEmbassyNote', lang)),
+        ...Object.entries(selectedEmbassy.in || {}).map(([country, cities]) =>
+          h('div', { key: country, className: 'flex gap-2' },
+            h('span', { className: 'text-base flex-shrink-0' }, hostFlags[country] || '🌐'),
+            h('span', { className: 'text-text-pri text-sm font-body' }, cities)
+          )
+        ),
+        h('a', {
+          href: selectedEmbassy.url,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          className: 'btn-gold flex items-center justify-center gap-2 mt-3 text-sm'
+        },
+          Icon('open_in_new', 'text-base'),
+          t('sosOfficialSite', lang)
         )
       )
     ),
